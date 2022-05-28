@@ -18,13 +18,6 @@
 Projeto proposto pela equipe Coodesh, feito em ReactJS, saiba mais [clicando aqui](https://lab.coodesh.com/public-challenges/front-end-challenge-2021).
 </br>
 
-- [x] Funcionalidades
-- [x] Design básico
-- [ ] Testes automatizados
-- [ ] Melhorias visuais
-- [ ] Refatoração
-- [ ] Finalização
-
 ## :sparkler: Executando o projeto
 Pare executar essa aplicação em seu computador, faça um git clone para o seu dispositivo:</br>
 
