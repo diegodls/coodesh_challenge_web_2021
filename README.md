@@ -29,7 +29,7 @@ Projeto proposto pela equipe Coodesh, feito em ReactJS, saiba mais [clicando aqu
 Pare executar essa aplicação em seu computador, faça um git clone para o seu dispositivo:</br>
 
 ```
-git clone https://github.com/diegodls/nlw_return_22-05.git
+git clone https://github.com/diegodls/coodesh_challenge_web_2021.git
 ```
 
 Execute o comando `yarn` (ou `npm install`, caso utilize npm), isso fará que sejam instaladas as dependências do projeto, após isso, você pode executar o comando `yarn dev` (ou `npm run dev`) para executar o projeto e acessa-lo pelo link: `http://localhost:3000/` em seu navegador .</br>
