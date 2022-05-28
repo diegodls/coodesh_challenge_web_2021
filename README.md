@@ -32,7 +32,7 @@ Pare executar essa aplicação em seu computador, faça um git clone para o seu 
 git clone https://github.com/diegodls/coodesh_challenge_web_2021.git
 ```
 
-Execute o comando `yarn` (ou `npm install`, caso utilize npm), isso fará que sejam instaladas as dependências do projeto, após isso, você pode executar o comando `yarn dev` (ou `npm run dev`) para executar o projeto e acessa-lo pelo link: `http://localhost:3000/` em seu navegador .</br>
+Navegue até a pasta raiz do projeot e execute o comando `yarn` (ou `npm install`, caso utilize npm), isso fará que sejam instaladas as dependências do projeto, após isso, você pode executar o comando `yarn dev` (ou `npm run dev`) para executar o projeto e acessa-lo pelo link: `http://localhost:3000/` em seu navegador .</br>
 Lembrando que como ainda está em construção, bugs/erros podem aparecer. Dicas são bem vindas. =]</br>
 
 ## :heavy_check_mark: Checklist
