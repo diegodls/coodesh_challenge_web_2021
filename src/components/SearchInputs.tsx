@@ -25,52 +25,51 @@ const natListT: NationalityList[] = [
   "US",
 ];
 
-interface SearchInputsProps {
-  currentFilters: string;
-  genderFilter: PatientGenders | null;
-  lastFilters: string;
-  loadingPatients: boolean;
-  natFilter: NationalityList[];
-  nameFilter: string;
-  loadMorePatients: () => void;
-  setNatFilter: React.Dispatch<React.SetStateAction<NationalityList[]>>;
-  handleChangeNameFilter: (name: string) => void;
-  handleChangeGenderFilter: (gender: PatientGenders | null) => void;
-}
+export default function SearchInputs() {
+  const {
+    genderFilter,
+    natFilter,
+    nameFilter,
+    currentFilters,
+    lastFilters,
+    loadMorePatients,
+    handleChangeGenderFilter,
+    setNatFilter,
+    handleChangeNameFilter,
+  } = usePatientContext();
 
-export default function SearchInputs(props: SearchInputsProps) {
   const [openFilterList, setOpenFilterList] = useState<boolean>(false);
 
   function handleGenderChange(e: React.ChangeEvent<HTMLInputElement>) {
     let gender = e.target.name as PatientGenders | null;
 
-    if (props.genderFilter === gender) {
-      props.handleChangeGenderFilter(null);
+    if (genderFilter === gender) {
+      handleChangeGenderFilter(null);
     } else {
-      props.handleChangeGenderFilter(gender);
+      handleChangeGenderFilter(gender);
     }
   }
 
   function handleNatChange(e: React.ChangeEvent<HTMLInputElement>) {
     let nat = e.target.name as NationalityList;
-    let tempNat = [...props.natFilter];
-    if (props.natFilter?.includes(nat)) {
+    let tempNat = [...natFilter];
+    if (natFilter?.includes(nat)) {
       tempNat = tempNat.filter((e) => e !== nat);
     } else {
       tempNat.push(nat);
     }
-    props.setNatFilter(tempNat);
+    setNatFilter(tempNat);
   }
 
   function handleSearchTextChange(
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) {
-    props.handleChangeNameFilter(e.target.value);
+    handleChangeNameFilter(e.target.value);
   }
 
   function handleApplyFilters() {
-    if (props.lastFilters !== props.currentFilters) {
-      props.loadMorePatients();
+    if (lastFilters !== currentFilters) {
+      loadMorePatients();
     }
   }
 
@@ -79,12 +78,11 @@ export default function SearchInputs(props: SearchInputsProps) {
       <div className='w-full flex flex-col'>
         <div className='w-full flex flex-row items-center justify-center'>
           <input
-            data-testid='searchByName'
             aria-label='Procurar por nome'
             type='search'
             className='w-full h-10 mr-1 px-3 border border-solid border-pharma-disable rounded transition ease-in-out m-0 focus:text-pharma-txt_primary focus:bg-white focus:border-pharma-enabled focus:outline-none'
             placeholder='Pesquisar paciente...'
-            value={props.nameFilter}
+            value={nameFilter}
             onChange={(
               e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
             ) => {
@@ -128,7 +126,7 @@ export default function SearchInputs(props: SearchInputsProps) {
                     <input
                       type='checkbox'
                       id='femaleGenderCheckbox'
-                      checked={props.genderFilter === "female"}
+                      checked={genderFilter === "female"}
                       onChange={(e) => {
                         handleGenderChange(e);
                       }}
@@ -142,7 +140,7 @@ export default function SearchInputs(props: SearchInputsProps) {
                       type='checkbox'
                       value=''
                       id='maleGenderCheckbox'
-                      checked={props.genderFilter === "male"}
+                      checked={genderFilter === "male"}
                       onChange={(e) => {
                         handleGenderChange(e);
                       }}
@@ -166,7 +164,7 @@ export default function SearchInputs(props: SearchInputsProps) {
                               type='checkbox'
                               value=''
                               id={`${country}countryCheckbox`}
-                              checked={props.natFilter?.includes(country)}
+                              checked={natFilter?.includes(country)}
                               onChange={(e) => {
                                 handleNatChange(e);
                               }}
@@ -184,7 +182,7 @@ export default function SearchInputs(props: SearchInputsProps) {
                 title='Filtrar'
                 className='h-10 p-2 border border-solid border-pharma-enable rounded self-end bg-pharma-secondary hover:bg-pharma-primary focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-pharma_primary focus:ring-pharma-border-focus transition-colors disabled:opacity-50'
                 onClick={handleApplyFilters}
-                disabled={props.currentFilters === props.lastFilters}
+                disabled={currentFilters === lastFilters}
               >
                 Filtrar
               </button>
