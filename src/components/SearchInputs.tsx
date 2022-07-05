@@ -25,52 +25,52 @@ const natListT: NationalityList[] = [
   "US",
 ];
 
-export default function SearchInputs() {
-  const {
-    genderFilter,
-    natFilter,
-    currentFilters,
-    lastFilters,
-    loadMorePatients,
-    handleChangeGenderFilter,
-    setNatFilter,
-    handleChangeNameFilter,
-  } = usePatientContext();
+interface SearchInputsProps {
+  currentFilters: string;
+  genderFilter: PatientGenders | null;
+  lastFilters: string;
+  loadingPatients: boolean;
+  natFilter: NationalityList[];
+  nameFilter: string;
+  loadMorePatients: () => void;
+  setNatFilter: React.Dispatch<React.SetStateAction<NationalityList[]>>;
+  handleChangeNameFilter: (name: string) => void;
+  handleChangeGenderFilter: (gender: PatientGenders | null) => void;
+}
 
-  const [searchText, setSearchText] = useState<string>("");
+export default function SearchInputs(props: SearchInputsProps) {
   const [openFilterList, setOpenFilterList] = useState<boolean>(false);
 
   function handleGenderChange(e: React.ChangeEvent<HTMLInputElement>) {
     let gender = e.target.name as PatientGenders | null;
 
-    if (genderFilter === gender) {
-      handleChangeGenderFilter(null);
+    if (props.genderFilter === gender) {
+      props.handleChangeGenderFilter(null);
     } else {
-      handleChangeGenderFilter(gender);
+      props.handleChangeGenderFilter(gender);
     }
   }
 
   function handleNatChange(e: React.ChangeEvent<HTMLInputElement>) {
     let nat = e.target.name as NationalityList;
-    let tempNat = [...natFilter];
-    if (natFilter?.includes(nat)) {
+    let tempNat = [...props.natFilter];
+    if (props.natFilter?.includes(nat)) {
       tempNat = tempNat.filter((e) => e !== nat);
     } else {
       tempNat.push(nat);
     }
-    setNatFilter(tempNat);
+    props.setNatFilter(tempNat);
   }
 
   function handleSearchTextChange(
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) {
-    setSearchText(e.target.value);
-    handleChangeNameFilter(e.target.value);
+    props.handleChangeNameFilter(e.target.value);
   }
 
   function handleApplyFilters() {
-    if (lastFilters !== currentFilters) {
-      loadMorePatients();
+    if (props.lastFilters !== props.currentFilters) {
+      props.loadMorePatients();
     }
   }
 
@@ -84,7 +84,7 @@ export default function SearchInputs() {
             type='search'
             className='w-full h-10 mr-1 px-3 border border-solid border-pharma-disable rounded transition ease-in-out m-0 focus:text-pharma-txt_primary focus:bg-white focus:border-pharma-enabled focus:outline-none'
             placeholder='Pesquisar paciente...'
-            value={searchText}
+            value={props.nameFilter}
             onChange={(
               e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
             ) => {
@@ -128,7 +128,7 @@ export default function SearchInputs() {
                     <input
                       type='checkbox'
                       id='femaleGenderCheckbox'
-                      checked={genderFilter === "female"}
+                      checked={props.genderFilter === "female"}
                       onChange={(e) => {
                         handleGenderChange(e);
                       }}
@@ -142,7 +142,7 @@ export default function SearchInputs() {
                       type='checkbox'
                       value=''
                       id='maleGenderCheckbox'
-                      checked={genderFilter === "male"}
+                      checked={props.genderFilter === "male"}
                       onChange={(e) => {
                         handleGenderChange(e);
                       }}
@@ -166,7 +166,7 @@ export default function SearchInputs() {
                               type='checkbox'
                               value=''
                               id={`${country}countryCheckbox`}
-                              checked={natFilter?.includes(country)}
+                              checked={props.natFilter?.includes(country)}
                               onChange={(e) => {
                                 handleNatChange(e);
                               }}
@@ -184,7 +184,7 @@ export default function SearchInputs() {
                 title='Filtrar'
                 className='h-10 p-2 border border-solid border-pharma-enable rounded self-end bg-pharma-secondary hover:bg-pharma-primary focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-pharma_primary focus:ring-pharma-border-focus transition-colors disabled:opacity-50'
                 onClick={handleApplyFilters}
-                disabled={currentFilters === lastFilters}
+                disabled={props.currentFilters === props.lastFilters}
               >
                 Filtrar
               </button>
