@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Sliders } from "phosphor-react";
-import { usePatientContext } from "../../contexts/usePatientsContext";
-import { PatientGenders, NationalityList } from "../../interfaces/IPatient";
+import { usePatientContext } from "../contexts/usePatientsContext";
+import { PatientGenders, NationalityList } from "../interfaces/IPatient";
 import { Disclosure, Transition } from "@headlessui/react";
 
 //ver o método createData que está na pagina de tabela do material ui para criar a lista abaixo.
