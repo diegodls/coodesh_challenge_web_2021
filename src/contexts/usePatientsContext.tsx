@@ -22,23 +22,23 @@ interface PatientProviderProps {
 }
 
 export interface PatientContextData {
-  patientsList: PatientFullData[] | null;
-  filteredPatientsList: PatientFullData[] | null;
   currentFilters: string;
+  errorLoadingPatients: string | null;
+  filteredPatientsList: PatientFullData[] | null;
+  genderFilter: PatientGenders | null;
   lastFilters: string;
   loadingPatients: boolean;
-  genderFilter: PatientGenders | null;
-  natFilter: NationalityList[];
-  errorLoadingPatients: string | null;
   nameFilter: string;
+  natFilter: NationalityList[];
   order: Order;
   orderBy: keyof OrderByTypes | null;
-  loadMorePatients: () => void;
+  patientsList: PatientFullData[] | null;
   defineTypeOfSorting: (type: keyof OrderByTypes) => void;
-  setNatFilter: React.Dispatch<React.SetStateAction<NationalityList[]>>;
-  handleChangeNameFilter: (name: string) => void;
   handleChangeGenderFilter: (gender: PatientGenders | null) => void;
+  handleChangeNameFilter: (name: string) => void;
   handleChangePatientQuantity: (quantity: number) => void;
+  loadMorePatients: () => void;
+  setNatFilter: React.Dispatch<React.SetStateAction<NationalityList[]>>;
 }
 
 const PatientContext = createContext({} as PatientContextData);

@@ -1,6 +1,7 @@
 import react from "react";
+
 describe("Testing SearchInputs component", () => {
-  it("should be able to check", () => {
+  it("should show name search input", () => {
     expect(1 + 1).toBe(2);
   });
 });
