@@ -315,5 +315,3 @@ describe("usePatientContext", () => {
     );
   });
 });
-
-//fazer um estado para a 'base_url' e uma função para altera-lo, para o teste poder setar para qualquer coisa e dar erro
