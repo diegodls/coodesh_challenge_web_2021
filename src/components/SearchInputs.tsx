@@ -90,6 +90,7 @@ export default function SearchInputs() {
             }}
           />
           <Disclosure.Button
+            aria-label='show-filters'
             className={`w-10 h-10 flex items-center justify-center border border-solid rounded ${
               openFilterList ? "bg-pharma-enable" : "bg-pharma-disable"
             } hover:bg-pharma-hover 
@@ -124,27 +125,26 @@ export default function SearchInputs() {
                   <label>Filtro por Gênero</label>
                   <label className='text-pharma-txt_primary flex items-center gap-1'>
                     <input
+                      name='female'
                       type='checkbox'
                       id='femaleGenderCheckbox'
                       checked={genderFilter === "female"}
                       onChange={(e) => {
                         handleGenderChange(e);
                       }}
-                      name='female'
                     />
                     Feminino
                   </label>
 
                   <label className='text-pharma-txt_primary flex items-center gap-1'>
                     <input
-                      type='checkbox'
-                      value=''
                       id='maleGenderCheckbox'
+                      name='male'
+                      type='checkbox'
                       checked={genderFilter === "male"}
                       onChange={(e) => {
                         handleGenderChange(e);
                       }}
-                      name='male'
                     />
                     Masculino
                   </label>
