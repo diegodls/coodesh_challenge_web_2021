@@ -100,15 +100,12 @@ function PatientProvider(props: PatientProviderProps) {
   ): Promise<PatientFullData[] | null> {
     let results: PatientFullData[] | null = null;
 
-    console.log(urlToFetch);
-
     await api
       .get<ApiResponseComplete>(urlToFetch)
       .then((response) => {
         results = response.data.results;
       })
       .catch((error) => {
-        console.log(error);
         setErrorLoadingPatients(error);
       });
 
