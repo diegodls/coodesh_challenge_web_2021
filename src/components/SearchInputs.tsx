@@ -125,7 +125,6 @@ export default function SearchInputs() {
                   <label>Filtro por Gênero</label>
                   <label className='text-pharma-txt_primary flex items-center gap-1'>
                     <input
-                      name='female'
                       type='checkbox'
                       id='femaleGenderCheckbox'
                       checked={genderFilter === "female"}
@@ -139,7 +138,6 @@ export default function SearchInputs() {
                   <label className='text-pharma-txt_primary flex items-center gap-1'>
                     <input
                       id='maleGenderCheckbox'
-                      name='male'
                       type='checkbox'
                       checked={genderFilter === "male"}
                       onChange={(e) => {
