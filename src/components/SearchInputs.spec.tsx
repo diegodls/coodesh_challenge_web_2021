@@ -23,6 +23,10 @@ describe("Testing SearchInputs component", () => {
   it("should filters options starts hidden", () => {
     render(<SearchInputs />);
 
+    const gendersFilterLabel = screen.queryByText("Filtro por Gênero");
+
+    expect(gendersFilterLabel).not.toBeInTheDocument();
+
     const femaleCheckbox: HTMLInputElement | null = screen.queryByRole(
       "checkbox",
       {
@@ -40,9 +44,43 @@ describe("Testing SearchInputs component", () => {
     );
 
     expect(maleCheckbox).not.toBeInTheDocument();
+
+    const nationalityFilterLabel = screen.queryByText(
+      "Filtro por Nacionalidade"
+    );
+
+    expect(nationalityFilterLabel).not.toBeInTheDocument();
   });
 
-  it("should shown filters options when click on shown button", async () => {
+  it("should shown gender filters options when click on show button", async () => {
+    render(<SearchInputs />);
+
+    const showFiltersButton = screen.getByRole("button", {
+      name: /show-filters/i,
+    });
+
+    expect(showFiltersButton).toBeInTheDocument();
+
+    userEvent.click(showFiltersButton);
+
+    const genderFilterLabel = await screen.findByText(/Filtro por Gênero/i);
+
+    expect(genderFilterLabel).toBeInTheDocument();
+
+    const femaleCheckbox = await screen.findByRole("checkbox", {
+      name: /feminino/i,
+    });
+
+    expect(femaleCheckbox).toBeInTheDocument();
+
+    const maleCheckbox = await screen.findByRole("checkbox", {
+      name: /masculino/i,
+    });
+
+    expect(maleCheckbox).toBeInTheDocument();
+  });
+
+  it("should be able to check/uncheck genders checkbox", async () => {
     render(<SearchInputs />);
 
     const showFiltersButton = screen.getByRole("button", {
@@ -58,5 +96,88 @@ describe("Testing SearchInputs component", () => {
     });
 
     expect(femaleCheckbox).toBeInTheDocument();
+
+    expect(femaleCheckbox).not.toBeChecked();
+
+    userEvent.click(femaleCheckbox);
+
+    waitFor(() => {
+      expect(femaleCheckbox).toBeChecked();
+    });
+
+    userEvent.click(femaleCheckbox);
+
+    waitFor(() => {
+      expect(femaleCheckbox).not.toBeChecked();
+    });
+
+    const maleCheckbox = await screen.findByRole("checkbox", {
+      name: /feminino/i,
+    });
+
+    expect(maleCheckbox).toBeInTheDocument();
+
+    expect(maleCheckbox).not.toBeChecked();
+
+    userEvent.click(maleCheckbox);
+
+    waitFor(() => {
+      expect(maleCheckbox).toBeChecked();
+    });
+
+    userEvent.click(maleCheckbox);
+
+    waitFor(() => {
+      expect(maleCheckbox).not.toBeChecked();
+    });
+  });
+
+  it("should show nationality filters when click on show button", async () => {
+    render(<SearchInputs />);
+
+    const showFiltersButton = screen.getByRole("button", {
+      name: /show-filters/i,
+    });
+    userEvent.click(showFiltersButton);
+
+    const nationalityFilterLabel = await screen.findByText(
+      "Filtro por Nacionalidade"
+    );
+
+    expect(nationalityFilterLabel).toBeInTheDocument();
+
+    const auCheckbox = await screen.findByRole("checkbox", { name: "AU" });
+
+    expect(auCheckbox).toBeInTheDocument();
+  });
+
+  it("should be able to check/uncheck nationality filter", async () => {
+    render(<SearchInputs />);
+
+    const showFiltersButton = screen.getByRole("button", {
+      name: /show-filters/i,
+    });
+    userEvent.click(showFiltersButton);
+
+    const nationalityFilterLabel = await screen.findByText(
+      "Filtro por Nacionalidade"
+    );
+
+    expect(nationalityFilterLabel).toBeInTheDocument();
+
+    const auCheckbox = await screen.findByRole("checkbox", { name: "AU" });
+
+    expect(auCheckbox).not.toBeChecked();
+    userEvent.click(auCheckbox);
+
+    waitFor(() => {
+      expect(auCheckbox).toBeChecked();
+    });
+
+    userEvent.click(auCheckbox);
+
+    waitFor(() => {
+      expect(auCheckbox).not.toBeChecked();
+    });
   });
 });
