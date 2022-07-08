@@ -138,46 +138,25 @@ describe("Testing SearchInputs component", () => {
     const showFiltersButton = screen.getByRole("button", {
       name: /show-filters/i,
     });
+
+    expect(showFiltersButton).toBeInTheDocument();
+
     userEvent.click(showFiltersButton);
 
-    const nationalityFilterLabel = await screen.findByText(
-      "Filtro por Nacionalidade"
-    );
+    const natFilterLabel = await screen.findByText(/Filtro por Nacionalidade/i);
 
-    expect(nationalityFilterLabel).toBeInTheDocument();
+    expect(natFilterLabel).toBeInTheDocument();
 
-    const auCheckbox = await screen.findByRole("checkbox", { name: "AU" });
+    const auCheckbox = await screen.findByRole("checkbox", {
+      name: /au/i,
+    });
 
     expect(auCheckbox).toBeInTheDocument();
-  });
 
-  it("should be able to check/uncheck nationality filter", async () => {
-    render(<SearchInputs />);
-
-    const showFiltersButton = screen.getByRole("button", {
-      name: /show-filters/i,
-    });
-    userEvent.click(showFiltersButton);
-
-    const nationalityFilterLabel = await screen.findByText(
-      "Filtro por Nacionalidade"
-    );
-
-    expect(nationalityFilterLabel).toBeInTheDocument();
-
-    const auCheckbox = await screen.findByRole("checkbox", { name: "AU" });
-
-    expect(auCheckbox).not.toBeChecked();
-    userEvent.click(auCheckbox);
-
-    waitFor(() => {
-      expect(auCheckbox).toBeChecked();
+    const brCheckbox = await screen.findByRole("checkbox", {
+      name: /br/i,
     });
 
-    userEvent.click(auCheckbox);
-
-    waitFor(() => {
-      expect(auCheckbox).not.toBeChecked();
-    });
+    expect(brCheckbox).toBeInTheDocument();
   });
 });
