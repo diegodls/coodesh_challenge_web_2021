@@ -44,7 +44,7 @@ describe("Testing GenderSearchOptions.tsx", () => {
     });
   });
 
-  it("should be able to uncheck male checkbox when check female checkbox", () => {
+  it("should uncheck male checkbox when check female checkbox", () => {
     render(<GenderSearchOptions />);
 
     const maleCheckbox = screen.getByRole("checkbox", { name: /masculino/i });
@@ -72,7 +72,7 @@ describe("Testing GenderSearchOptions.tsx", () => {
     });
   });
 
-  it("should be able to uncheck female checkbox when check male checkbox", () => {
+  it("should uncheck female checkbox when check male checkbox", () => {
     render(<GenderSearchOptions />);
 
     const maleCheckbox = screen.getByRole("checkbox", { name: /masculino/i });
