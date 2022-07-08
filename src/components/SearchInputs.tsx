@@ -3,6 +3,8 @@ import { Sliders } from "phosphor-react";
 import { usePatientContext } from "../contexts/usePatientsContext";
 import { PatientGenders, NationalityList } from "../interfaces/IPatient";
 import { Disclosure, Transition } from "@headlessui/react";
+import GenderSearchOptions from "./genderSearchOptions";
+import NationalitySearchOptions from "./NationalitySearchOptions";
 
 //ver o método createData que está na pagina de tabela do material ui para criar a lista abaixo.
 const natListT: NationalityList[] = [
@@ -27,28 +29,16 @@ const natListT: NationalityList[] = [
 
 export default function SearchInputs() {
   const {
-    genderFilter,
     natFilter,
     nameFilter,
     currentFilters,
     lastFilters,
     loadMorePatients,
-    handleChangeGenderFilter,
     setNatFilter,
     handleChangeNameFilter,
   } = usePatientContext();
 
   const [openFilterList, setOpenFilterList] = useState<boolean>(false);
-
-  function handleGenderChange(e: React.ChangeEvent<HTMLInputElement>) {
-    let gender = e.target.name as PatientGenders | null;
-
-    if (genderFilter === gender) {
-      handleChangeGenderFilter(null);
-    } else {
-      handleChangeGenderFilter(gender);
-    }
-  }
 
   function handleNatChange(e: React.ChangeEvent<HTMLInputElement>) {
     let nat = e.target.name as NationalityList;
@@ -116,67 +106,10 @@ export default function SearchInputs() {
           leaveTo='opacity-0'
         >
           <Disclosure.Panel>
-            <div className='w-full flex flex-col'>
-              <div
-                className='w-full flex flex-row mt-1 
-            '
-              >
-                <div className='w-full'>
-                  <label>Filtro por Gênero</label>
-                  <label className='text-pharma-txt_primary flex items-center gap-1'>
-                    <input
-                      name='female'
-                      type='checkbox'
-                      id='femaleGenderCheckbox'
-                      checked={genderFilter === "female"}
-                      onChange={(e) => {
-                        handleGenderChange(e);
-                      }}
-                    />
-                    Feminino
-                  </label>
-
-                  <label className='text-pharma-txt_primary flex items-center gap-1'>
-                    <input
-                      name='male'
-                      id='maleGenderCheckbox'
-                      type='checkbox'
-                      checked={genderFilter === "male"}
-                      onChange={(e) => {
-                        handleGenderChange(e);
-                      }}
-                    />
-                    Masculino
-                  </label>
-                </div>
-
-                <div className='w-full'>
-                  <label>Filtro por Nacionalidade</label>
-                  <div>
-                    <div className='w-full grid grid-cols-6'>
-                      {natListT.map((country) => {
-                        return (
-                          <label
-                            className='text-pharma-txt_primary flex items-center gap-1'
-                            key={country}
-                          >
-                            <input
-                              type='checkbox'
-                              value=''
-                              id={`${country}countryCheckbox`}
-                              checked={natFilter?.includes(country)}
-                              onChange={(e) => {
-                                handleNatChange(e);
-                              }}
-                              name={country}
-                            />
-                            {country}
-                          </label>
-                        );
-                      })}
-                    </div>
-                  </div>
-                </div>
+            <div className='flex flex-col mt-1'>
+              <div className='flex flex-row'>
+                <GenderSearchOptions />
+                <NationalitySearchOptions />
               </div>
               <button
                 title='Filtrar'
