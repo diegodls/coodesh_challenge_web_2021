@@ -19,5 +19,6 @@ const renderWithContext = (
 };
 
 export * from "@testing-library/react";
+export * from "@testing-library/user-event";
 
 export { renderWithContext as render };
