@@ -20,7 +20,7 @@ describe("Testing SearchInputs component", () => {
     });
   });
 
-  it("should filters options starts hidden", () => {
+  it("should filters options starts hidden", async () => {
     render(<SearchInputs />);
 
     const gendersFilterLabel = screen.queryByText("Filtro por Gênero");
@@ -50,6 +50,12 @@ describe("Testing SearchInputs component", () => {
     );
 
     expect(nationalityFilterLabel).not.toBeInTheDocument();
+
+    const auCheckbox = screen.queryByRole("checkbox", {
+      name: /au/i,
+    });
+
+    expect(auCheckbox).not.toBeInTheDocument();
   });
 
   it("should shown gender filters options when click on show button", async () => {
