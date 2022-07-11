@@ -14,7 +14,7 @@ export default function GenderSearchOptions() {
     }
   }
   return (
-    <>
+    <div className='w-full flex flex-col '>
       <label>Filtro por Gênero</label>
       <label>
         <input
@@ -42,6 +42,6 @@ export default function GenderSearchOptions() {
         />
         Masculino
       </label>
-    </>
+    </div>
   );
 }
