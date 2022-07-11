@@ -4,25 +4,14 @@ import { usePatientContext } from "../contexts/usePatientsContext";
 import { Disclosure, Transition } from "@headlessui/react";
 
 import NationalitySearchOptions from "./NationalitySearchOptions";
+
+import NameSearchOption from "./NameSearchOption";
 import GenderSearchOptions from "./genderSearchOptions";
-import NameSearchOption from "./nameSearchOption";
 
 export default function SearchInputs() {
-  const {
-    nameFilter,
-    currentFilters,
-    lastFilters,
-    loadMorePatients,
-    handleChangeNameFilter,
-  } = usePatientContext();
+  const { currentFilters, lastFilters, loadMorePatients } = usePatientContext();
 
   const [openFilterList, setOpenFilterList] = useState<boolean>(false);
-
-  function handleSearchTextChange(
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) {
-    handleChangeNameFilter(e.target.value);
-  }
 
   function handleApplyFilters() {
     if (lastFilters !== currentFilters) {
