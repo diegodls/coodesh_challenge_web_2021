@@ -1,11 +1,12 @@
-import {
-  patientListOnePageMock,
-  patientListTwoPagesMock,
-} from "./patientListMock";
+import { patientListOnePageMock } from "./patientListMock";
 import { rest } from "msw";
+import { ApiResponseComplete } from "../interfaces/IPatient";
 
 export const handlers = [
-  rest.get("https://randomuser.me/api/?results=50&page=1", (req, res, ctx) => {
-    return res(ctx.json(patientListOnePageMock));
-  }),
+  rest.get<ApiResponseComplete>(
+    "https://randomuser.me/api/",
+    (req, res, ctx) => {
+      return res(ctx.json(patientListOnePageMock));
+    }
+  ),
 ];
