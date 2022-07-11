@@ -58,6 +58,22 @@ describe("Testing SearchInputs component", () => {
     expect(auCheckbox).not.toBeInTheDocument();
   });
 
+  it("should shown nationality filters options when click on show button", async () => {
+    render(<SearchInputs />);
+
+    const showFiltersButton = screen.getByRole("button", {
+      name: /show-filters/i,
+    });
+
+    expect(showFiltersButton).toBeInTheDocument();
+
+    userEvent.click(showFiltersButton);
+
+    const natFilterLabel = await screen.findByText(/Filtro por Nacionalidade/i);
+
+    expect(natFilterLabel).toBeInTheDocument();
+  });
+
   it("should shown gender filters options when click on show button", async () => {
     render(<SearchInputs />);
 
@@ -136,33 +152,5 @@ describe("Testing SearchInputs component", () => {
     waitFor(() => {
       expect(maleCheckbox).not.toBeChecked();
     });
-  });
-
-  it("should show nationality filters when click on show button", async () => {
-    render(<SearchInputs />);
-
-    const showFiltersButton = screen.getByRole("button", {
-      name: /show-filters/i,
-    });
-
-    expect(showFiltersButton).toBeInTheDocument();
-
-    userEvent.click(showFiltersButton);
-
-    const natFilterLabel = await screen.findByText(/Filtro por Nacionalidade/i);
-
-    expect(natFilterLabel).toBeInTheDocument();
-
-    const auCheckbox = await screen.findByRole("checkbox", {
-      name: /au/i,
-    });
-
-    expect(auCheckbox).toBeInTheDocument();
-
-    const brCheckbox = await screen.findByRole("checkbox", {
-      name: /br/i,
-    });
-
-    expect(brCheckbox).toBeInTheDocument();
   });
 });
