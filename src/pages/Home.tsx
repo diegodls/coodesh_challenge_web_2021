@@ -1,5 +1,5 @@
 import PatientModal from "../components/PatientModal";
-import PatientTableList from "../components/PatientTableList";
+import { PatientTableArea } from "../components/PatientTableArea";
 import SearchInputs from "../components/SearchInputs";
 
 const Home = () => {
@@ -11,7 +11,7 @@ const Home = () => {
         nossos pacientes.
       </p>
       <SearchInputs />
-      <PatientTableList />
+      <PatientTableArea />
       <PatientModal />
     </div>
   );
