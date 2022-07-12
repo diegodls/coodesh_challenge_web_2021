@@ -1,5 +1,6 @@
-import { render, RenderOptions } from "@testing-library/react";
 import React, { FC, ReactElement } from "react";
+import { render, RenderOptions } from "@testing-library/react";
+
 import { PatientProvider } from "../contexts/usePatientsContext";
 import { PatientModalProvider } from "../contexts/useModalPatients";
 
@@ -15,7 +16,10 @@ const renderWithContext = (
   ui: ReactElement,
   options?: Omit<RenderOptions, "wrapper">
 ) => {
-  render(ui, { wrapper: allProviders, ...options });
+  render(ui, {
+    wrapper: allProviders,
+    ...options,
+  });
 };
 
 export * from "@testing-library/react";
