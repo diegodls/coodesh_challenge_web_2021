@@ -7,6 +7,7 @@ import { usePatientModal } from "../contexts/useModalPatients";
 
 import LoadingPatients from "./LoadingPatients";
 import { SortingButtonTable } from "./SortingButtonTable";
+import PatientTableList from "./PatientTableList";
 
 interface OrderByTypes {
   name: string;
@@ -60,95 +61,7 @@ export const PatientTableArea = () => {
           <LoadingPatients />
         ) : (
           <div className='w-full h-[440px] rounded border border-solid border-pharma-border_enable overflow-auto scrollbar-thumb-zinc-500 hover:scrollbar-thumb-zinc-700 scrollbar-track-transparent scrollbar-thin'>
-            <table
-              aria-label='Tabela de pacientes'
-              aria-labelledby='Tabela de pacientes'
-              className='w-full border-collapse table-fixed'
-            >
-              <thead>
-                <tr className='h-10'>
-                  <th
-                    align='center'
-                    className='sticky top-0 bg-pharma-border_disabled '
-                  >
-                    <SortingButtonTable
-                      name='Nome'
-                      type='name'
-                      order={order}
-                      orderBy={orderBy}
-                      setTypeOfSorting={setTypeOfSorting}
-                    />
-                  </th>
-                  <th
-                    align='center'
-                    className='sticky top-0  bg-pharma-border_disabled '
-                  >
-                    <SortingButtonTable
-                      name='Gênero'
-                      type='gender'
-                      order={order}
-                      orderBy={orderBy}
-                      setTypeOfSorting={setTypeOfSorting}
-                    />
-                  </th>
-
-                  <th
-                    align='center'
-                    className='sticky top-0  bg-pharma-border_disabled '
-                  >
-                    <SortingButtonTable
-                      name='Data de Nascimento'
-                      type='dob'
-                      order={order}
-                      orderBy={orderBy}
-                      setTypeOfSorting={setTypeOfSorting}
-                    />
-                  </th>
-
-                  <td
-                    align='center'
-                    className='sticky top-0  bg-pharma-border_disabled '
-                  >
-                    Ações
-                  </td>
-                </tr>
-              </thead>
-              <tbody>
-                {filteredPatientsList?.map(
-                  (patient: PatientFullData, index) => {
-                    const labelId = `enhanced-table-checkdiv-${index}`;
-                    return (
-                      <tr
-                        role='checkdiv'
-                        tabIndex={-1}
-                        key={patient.login.uuid}
-                        className='h-10 border-t border-solid border-pharma-border_enable'
-                      >
-                        <td id={labelId} scope='row' className=''>
-                          {patient.name.first} {patient.name.last} -
-                          {patient.nat}
-                        </td>
-                        <td align='center' className=''>
-                          {patient.gender}
-                        </td>
-                        <td align='center' className=''>
-                          {formatDate(patient.dob.date)}
-                        </td>
-                        <td align='center' className=''>
-                          <button
-                            onClick={() => {
-                              viewPatientDetails(patient);
-                            }}
-                          >
-                            Detalhes
-                          </button>
-                        </td>
-                      </tr>
-                    );
-                  }
-                )}
-              </tbody>
-            </table>
+            <PatientTableList />
           </div>
         )}
       </div>
