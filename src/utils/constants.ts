@@ -1,6 +1,6 @@
 import { PatientFullData } from "../interfaces/IPatient";
 
-export const API_PATIENT_QUANTITY: number = 50;
+export const API_PATIENT_QUANTITY: number = 10;
 export const TIMEOUT_INTERVAL_ACTION: number = 1000; // milliseconds
 export const TIMEOUT_INTERVAL_WAIT: number = 2000; // milliseconds
 export const mockFirstPatient: PatientFullData = {
