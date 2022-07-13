@@ -1,6 +1,9 @@
+import { patientListOnePageMock } from "./../test/patientListMock";
 import { PatientFullData } from "../interfaces/IPatient";
 
 export const API_PATIENT_QUANTITY: number = 10;
+export const MOCK_API_PATIENT_QUANTITY: number =
+  patientListOnePageMock.results.length;
 export const TIMEOUT_INTERVAL_ACTION: number = 1000; // milliseconds
 export const TIMEOUT_INTERVAL_WAIT: number = 2000; // milliseconds
 export const mockFirstPatient: PatientFullData = {
