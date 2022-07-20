@@ -26,11 +26,6 @@ function PatientModalProvider(props: PatientModalProviderProps) {
   const [currentModalPatient, setCurrentModalPatient] =
     useState<PatientFullData | null>(null);
 
-  const [loadingPatientInfoError, setLoadingPatientInfoError] = useState<{
-    error: boolean;
-    msg: string;
-  }>({ error: false, msg: "" });
-
   const [openPatientModal, setOpenPatientModal] = useState<boolean>(false);
 
   function setPatient(patient: PatientFullData | null): void {
