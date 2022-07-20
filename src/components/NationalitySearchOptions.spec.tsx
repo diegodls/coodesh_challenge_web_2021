@@ -22,7 +22,7 @@ describe("Testing NationalitySearchOptions component", () => {
     }
   });
 
-  it("should be able to check/uncheck nationality filters", () => {
+  it("should be able to check/uncheck nationality filters", async () => {
     render(<NationalitySearchOptions />);
 
     const natFilterLabel = screen.queryByText("Filtro por Nacionalidade");
@@ -34,32 +34,37 @@ describe("Testing NationalitySearchOptions component", () => {
     expect(natFilterAllCheckboxes.length).toBe(NAT_AMOUNT);
 
     for (let natCheckbox of natFilterAllCheckboxes) {
-      userEvent.click(natCheckbox);
-      waitFor(() => {
-        expect(natCheckbox).toBeChecked();
-      });
-      userEvent.click(natCheckbox);
-      waitFor(() => {
-        expect(natCheckbox).not.toBeChecked();
-      });
+      await userEvent.click(natCheckbox);
+
+      expect(natCheckbox).toBeChecked();
+
+      await userEvent.click(natCheckbox);
+
+      expect(natCheckbox).not.toBeChecked();
     }
   });
 
-  it("should be able to check more than one option", () => {
+  it("should be able to check more than one option", async () => {
     render(<NationalitySearchOptions />);
 
     const auCheckbox = screen.getByRole("checkbox", { name: /au/i });
+
     expect(auCheckbox).not.toBeChecked();
-    userEvent.click(auCheckbox);
-    waitFor(() => {
-      expect(auCheckbox).toBeChecked();
-    });
+
+    await userEvent.click(auCheckbox);
+
+    expect(auCheckbox).toBeChecked();
 
     const brCheckbox = screen.getByRole("checkbox", { name: /br/i });
+
     expect(brCheckbox).not.toBeChecked();
-    userEvent.click(brCheckbox);
-    waitFor(() => {
-      expect(brCheckbox).toBeChecked();
-    });
+
+    await userEvent.click(brCheckbox);
+
+    expect(brCheckbox).toBeChecked();
+
+    await userEvent.click(brCheckbox);
+
+    expect(brCheckbox).not.toBeChecked();
   });
 });
