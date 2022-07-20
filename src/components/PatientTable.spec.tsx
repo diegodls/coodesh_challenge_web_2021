@@ -2,13 +2,6 @@ import { render, screen, waitFor } from "../test/testing-library-utils";
 import { PatientTable } from "./PatientTable";
 
 describe("Testing PatientTable.tsx", () => {
-  it("should show a loading message", async () => {
-    render(<PatientTable />);
-    waitFor(() => {
-      expect(screen.getByText(/Carregando pacientes.../i)).toBeInTheDocument();
-    });
-  });
-
   it("should render a table", async () => {
     render(<PatientTable />);
     const patientTable: HTMLElement = await screen.findByRole("table", {
