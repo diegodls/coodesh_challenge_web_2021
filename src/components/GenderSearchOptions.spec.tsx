@@ -16,87 +16,79 @@ describe("Testing GenderSearchOptions.tsx", () => {
     expect(maleCheckbox).toBeInTheDocument();
   });
 
-  it("should be able to check female checkbox", () => {
+  it("should be able to check female/uncheck checkbox", async () => {
     render(<GenderSearchOptions />);
 
     const femaleCheckbox = screen.getByRole("checkbox", { name: /feminino/i });
 
     expect(femaleCheckbox).not.toBeChecked();
 
-    userEvent.click(femaleCheckbox);
+    await userEvent.click(femaleCheckbox);
 
-    waitFor(() => {
-      expect(femaleCheckbox).toBeChecked();
-    });
+    expect(femaleCheckbox).toBeChecked();
+
+    await userEvent.click(femaleCheckbox);
+
+    expect(femaleCheckbox).not.toBeChecked();
   });
 
-  it("should be able to check male checkbox", () => {
+  it("should be able to check/uncheck male checkbox", async () => {
     render(<GenderSearchOptions />);
 
     const maleCheckbox = screen.getByRole("checkbox", { name: /masculino/i });
 
     expect(maleCheckbox).not.toBeChecked();
 
-    userEvent.click(maleCheckbox);
+    await userEvent.click(maleCheckbox);
 
-    waitFor(() => {
-      expect(maleCheckbox).toBeChecked();
-    });
+    expect(maleCheckbox).toBeChecked();
+
+    await userEvent.click(maleCheckbox);
+
+    expect(maleCheckbox).not.toBeChecked();
   });
 
-  it("should uncheck male checkbox when check female checkbox", () => {
+  it("should uncheck male checkbox when check female checkbox", async () => {
     render(<GenderSearchOptions />);
 
     const maleCheckbox = screen.getByRole("checkbox", { name: /masculino/i });
 
     expect(maleCheckbox).not.toBeChecked();
 
-    userEvent.click(maleCheckbox);
+    await userEvent.click(maleCheckbox);
 
-    waitFor(() => {
-      expect(maleCheckbox).toBeChecked();
-    });
+    expect(maleCheckbox).toBeChecked();
 
     const femaleCheckbox = screen.getByRole("checkbox", { name: /feminino/i });
 
     expect(femaleCheckbox).not.toBeChecked();
 
-    userEvent.click(femaleCheckbox);
+    await userEvent.click(femaleCheckbox);
 
-    waitFor(() => {
-      expect(femaleCheckbox).toBeChecked();
-    });
-
-    waitFor(() => {
-      expect(maleCheckbox).not.toBeChecked();
-    });
-  });
-
-  it("should uncheck female checkbox when check male checkbox", () => {
-    render(<GenderSearchOptions />);
-
-    const maleCheckbox = screen.getByRole("checkbox", { name: /masculino/i });
+    expect(femaleCheckbox).toBeChecked();
 
     expect(maleCheckbox).not.toBeChecked();
+  });
 
-    userEvent.click(maleCheckbox);
-
-    waitFor(() => {
-      expect(maleCheckbox).toBeChecked();
-    });
+  it("should uncheck female checkbox when check male checkbox", async () => {
+    render(<GenderSearchOptions />);
 
     const femaleCheckbox = screen.getByRole("checkbox", { name: /feminino/i });
 
     expect(femaleCheckbox).not.toBeChecked();
 
-    userEvent.click(femaleCheckbox);
+    await userEvent.click(femaleCheckbox);
 
-    waitFor(() => {
-      expect(maleCheckbox).toBeChecked();
-    });
+    expect(femaleCheckbox).toBeChecked();
 
-    waitFor(() => {
-      expect(femaleCheckbox).not.toBeChecked();
-    });
+    const maleCheckbox = screen.getByRole("checkbox", { name: /masculino/i });
+
+    expect(maleCheckbox).not.toBeChecked();
+
+    await userEvent.click(maleCheckbox);
+
+    expect(maleCheckbox).toBeChecked();
+
+    expect(femaleCheckbox).not.toBeChecked();
   });
 });
