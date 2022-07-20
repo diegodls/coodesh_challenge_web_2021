@@ -9,8 +9,6 @@ import { SortingButtonTable } from "./SortingButtonTable";
 
 describe("Testing SortingButtonTable.tsx", () => {
   it("should call setTypeOfSorting() function when clicked", async () => {
-    //para cobrir as linhas 41-42 do componente, será necessário trocar a ordem de asc para desc (ou o contrário) utilizando a função abaixo(pesquisar sobre).
-
     const setTypeOfSorting = jest.fn();
 
     RTLRender(
@@ -30,5 +28,41 @@ describe("Testing SortingButtonTable.tsx", () => {
     await userEvent.click(sortingButton);
 
     expect(setTypeOfSorting).toHaveBeenCalledTimes(1);
+  });
+
+  it("should be able to call setTypeOfSorting() after changing from asc to desc", async () => {
+    const setTypeOfSorting = jest.fn();
+
+    const { rerender } = RTLRender(
+      <SortingButtonTable
+        name='Test'
+        order='asc'
+        orderBy='name'
+        type='name'
+        setTypeOfSorting={setTypeOfSorting}
+      />
+    );
+
+    const sortingButton = RTLScreen.getByRole("button", { name: /test/i });
+
+    expect(sortingButton).toBeInTheDocument();
+
+    await userEvent.click(sortingButton);
+
+    expect(setTypeOfSorting).toHaveBeenCalledTimes(1);
+
+    rerender(
+      <SortingButtonTable
+        name='Test'
+        order='desc'
+        orderBy='name'
+        type='name'
+        setTypeOfSorting={setTypeOfSorting}
+      />
+    );
+
+    await userEvent.click(sortingButton);
+
+    expect(setTypeOfSorting).toHaveBeenCalledTimes(2);
   });
 });
