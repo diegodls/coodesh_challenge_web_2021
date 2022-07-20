@@ -12,10 +12,7 @@ const allProviders: FC<{ children: React.ReactNode }> = ({ children }) => {
   );
 };
 
-const renderWithContext = (
-  ui: ReactElement,
-  options?: Omit<RenderOptions, "wrapper">
-) => {
+const renderWithContext = (ui: ReactElement, options?: RenderOptions) => {
   render(ui, {
     wrapper: allProviders,
     ...options,
