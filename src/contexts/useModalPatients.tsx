@@ -83,4 +83,4 @@ function usePatientModal() {
   return context;
 }
 
-export { PatientModalProvider, usePatientModal };
+export { PatientModalContext, PatientModalProvider, usePatientModal };
