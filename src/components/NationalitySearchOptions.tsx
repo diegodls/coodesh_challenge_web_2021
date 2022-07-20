@@ -1,9 +1,5 @@
-import { useState } from "react";
-import { Sliders } from "phosphor-react";
 import { usePatientContext } from "../contexts/usePatientsContext";
-import { PatientGenders, NationalityList } from "../interfaces/IPatient";
-import { Disclosure, Transition } from "@headlessui/react";
-import GenderSearchOptions from "./genderSearchOptions";
+import { NationalityList } from "../interfaces/IPatient";
 
 //ver o método createData que está na pagina de tabela do material ui para criar a lista abaixo.
 const natListT: NationalityList[] = [
@@ -31,7 +27,7 @@ export default function NationalitySearchOptions() {
 
   function handleNatChange(e: React.ChangeEvent<HTMLInputElement>) {
     let nat = e.target.name as NationalityList;
-    let tempNat = [...natFilter];
+    let tempNat: NationalityList[] = [...natFilter];
     if (natFilter?.includes(nat)) {
       tempNat = tempNat.filter((e) => e !== nat);
     } else {
