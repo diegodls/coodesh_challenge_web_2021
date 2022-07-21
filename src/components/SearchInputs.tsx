@@ -15,7 +15,6 @@ export default function SearchInputs() {
 
   function handleApplyFilters() {
     if (lastFilters !== currentFilters) {
-      console.log("handleApplyFilters - loadMorePatients");
       loadMorePatients();
     }
   }
