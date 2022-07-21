@@ -10,12 +10,7 @@ import { formatDate } from "../utils/common-functions";
 export const PatientTable = () => {
   const { setPatient } = usePatientModal();
 
-  const { filteredPatientsList, order, orderBy, defineTypeOfSorting } =
-    usePatientContext();
-
-  function setTypeOfSorting(type: keyof OrderByTypes) {
-    defineTypeOfSorting(type);
-  }
+  const { filteredPatientsList } = usePatientContext();
 
   function viewPatientDetails(patient: PatientFullData): void {
     setPatient(patient);
@@ -34,38 +29,20 @@ export const PatientTable = () => {
               align='center'
               className='sticky top-0 bg-pharma-border_disabled '
             >
-              <SortingButtonTable
-                name='Nome'
-                type='name'
-                order={order}
-                orderBy={orderBy}
-                setTypeOfSorting={setTypeOfSorting}
-              />
+              <SortingButtonTable name='Nome' type='name' />
             </th>
             <th
               align='center'
               className='sticky top-0  bg-pharma-border_disabled '
             >
-              <SortingButtonTable
-                name='Gênero'
-                type='gender'
-                order={order}
-                orderBy={orderBy}
-                setTypeOfSorting={setTypeOfSorting}
-              />
+              <SortingButtonTable name='Gênero' type='gender' />
             </th>
 
             <th
               align='center'
               className='sticky top-0  bg-pharma-border_disabled '
             >
-              <SortingButtonTable
-                name='Data de Nascimento'
-                type='dob'
-                order={order}
-                orderBy={orderBy}
-                setTypeOfSorting={setTypeOfSorting}
-              />
+              <SortingButtonTable name='Data de Nascimento' type='dob' />
             </th>
 
             <th
