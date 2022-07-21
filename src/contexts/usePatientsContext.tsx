@@ -100,6 +100,8 @@ function PatientProvider(props: PatientProviderProps) {
   ): Promise<PatientFullData[] | null> {
     let results: PatientFullData[] | null = null;
 
+    console.log("fetchPatients - Buscando pacientes");
+
     await api
       .get<ApiResponseComplete>(urlToFetch)
       .then((response) => {
@@ -109,10 +111,14 @@ function PatientProvider(props: PatientProviderProps) {
         setErrorLoadingPatients(error);
       });
 
+    console.log(results);
+
     return results;
   }
 
   async function loadMorePatients(): Promise<void> {
+    console.log("loadMorePatients - Buscando pacientes");
+
     setLoadingPatients(true);
     setErrorLoadingPatients(null);
 
@@ -147,8 +153,8 @@ function PatientProvider(props: PatientProviderProps) {
           a.name.first.normalize("NFD").replace(/[\u0300-\u036f]/g, "") >
           b.name.first.normalize("NFD").replace(/[\u0300-\u036f]/g, "")
             ? 1
-            : b.name.last.normalize("NFD").replace(/[\u0300-\u036f]/g, "") >
-              a.name.last.normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+            : b.name.first.normalize("NFD").replace(/[\u0300-\u036f]/g, "") >
+              a.name.first.normalize("NFD").replace(/[\u0300-\u036f]/g, "")
             ? -1
             : 0
         );
@@ -157,8 +163,8 @@ function PatientProvider(props: PatientProviderProps) {
           a.name.first.normalize("NFD").replace(/[\u0300-\u036f]/g, "") <
           b.name.first.normalize("NFD").replace(/[\u0300-\u036f]/g, "")
             ? 1
-            : b.name.last.normalize("NFD").replace(/[\u0300-\u036f]/g, "") <
-              a.name.last.normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+            : b.name.first.normalize("NFD").replace(/[\u0300-\u036f]/g, "") <
+              a.name.first.normalize("NFD").replace(/[\u0300-\u036f]/g, "")
             ? -1
             : 0
         );
@@ -238,17 +244,22 @@ function PatientProvider(props: PatientProviderProps) {
   }
 
   useEffect(() => {
+    console.log("useEffect - handleUrlFiltersQuery");
     handleUrlFiltersQuery();
   }, [genderFilter, natFilter]);
 
   useEffect(() => {
+    console.log("useEffect - filterPatientsList");
+
     filterPatientsList();
   }, [patientsList, nameFilter, order, orderBy]);
 
   useEffect(() => {
+    console.log("=".repeat(25));
     loadMorePatients();
   }, []);
 
+  console.log("usePatientContext rendering");
   return (
     <>
       <PatientContext.Provider
