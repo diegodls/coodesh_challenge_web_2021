@@ -1,28 +1,20 @@
 import { ArrowsDownUp, SortAscending, SortDescending } from "phosphor-react";
-import { Order, OrderByTypes } from "../interfaces/IPatient";
+import { usePatientContext } from "../contexts/usePatientsContext";
+import { OrderByTypes } from "../interfaces/IPatient";
 
-interface Props {
+interface SortingButtonTableProps {
   name: string;
   type: keyof OrderByTypes;
-  order: Order;
-  orderBy: keyof OrderByTypes | null;
-  setTypeOfSorting(name: string): void;
 }
 
-export function SortingButtonTable({
-  name,
-  type,
-  order,
-  orderBy,
-  setTypeOfSorting,
-}: Props) {
+export function SortingButtonTable({ name, type }: SortingButtonTableProps) {
+  const { order, orderBy, defineTypeOfSorting } = usePatientContext();
+
   return (
     <button
       aria-label={`Ordenar pacientes por ${name}`}
       className='w-full h-full flex flex-row items-center justify-center gap-1'
-      onClick={() => {
-        setTypeOfSorting(type);
-      }}
+      onClick={() => defineTypeOfSorting(type)}
     >
       {name}
 
