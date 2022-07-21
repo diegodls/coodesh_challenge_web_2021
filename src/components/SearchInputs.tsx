@@ -6,7 +6,7 @@ import { Disclosure, Transition } from "@headlessui/react";
 import NationalitySearchOptions from "./NationalitySearchOptions";
 
 import NameSearchOption from "./NameSearchOption";
-import GenderSearchOptions from "./genderSearchOptions";
+import GenderSearchOptions from "./GenderSearchOptions";
 
 export default function SearchInputs() {
   const { currentFilters, lastFilters, loadMorePatients } = usePatientContext();
@@ -15,6 +15,7 @@ export default function SearchInputs() {
 
   function handleApplyFilters() {
     if (lastFilters !== currentFilters) {
+      console.log("handleApplyFilters - loadMorePatients");
       loadMorePatients();
     }
   }
