@@ -26,22 +26,9 @@ function PatientModalProvider(props: PatientModalProviderProps) {
   const [currentModalPatient, setCurrentModalPatient] =
     useState<PatientFullData | null>(null);
 
-<<<<<<< HEAD
   const [openPatientModal, setOpenPatientModal] = useState<boolean>(false);
 
   function setPatient(patient: PatientFullData | null): void {
-=======
-  const [loadingPatientInfoError, setLoadingPatientInfoError] = useState<{
-    error: boolean;
-    msg: string;
-  }>({ error: false, msg: "" });
-
-  const [openPatientModal, setOpenPatientModal] = useState<boolean>(false);
-
-  function setPatient(patient: PatientFullData | null): void {
-    console.log(patient);
-
->>>>>>> b101de6cdb8918067fa419f9016d761aa1e10eaa
     if (patient && patient.login.uuid !== currentModalPatient?.login.uuid) {
       setCurrentModalPatient(patient);
     }
@@ -91,8 +78,4 @@ function usePatientModal() {
   return context;
 }
 
-<<<<<<< HEAD
 export { PatientModalContext, PatientModalProvider, usePatientModal };
-=======
-export { PatientModalProvider, usePatientModal };
->>>>>>> b101de6cdb8918067fa419f9016d761aa1e10eaa
