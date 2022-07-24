@@ -21,6 +21,7 @@ interface PatientProviderProps {
   children: ReactNode;
 }
 
+<<<<<<< HEAD
 export interface PatientContextData {
   currentFilters: string;
   errorLoadingPatients: string | null;
@@ -39,6 +40,26 @@ export interface PatientContextData {
   handleChangePatientQuantity: (quantity: number) => void;
   loadMorePatients: () => void;
   setNatFilter: React.Dispatch<React.SetStateAction<NationalityList[]>>;
+=======
+interface PatientContextData {
+  patientsList: PatientFullData[] | null;
+  filteredPatientsList: PatientFullData[] | null;
+  currentFilters: string;
+  lastFilters: string;
+  loadingPatients: boolean;
+  genderFilter: PatientGenders | null;
+  natFilter: NationalityList[];
+  errorLoadingPatients: string | null;
+  nameFilter: string;
+  order: Order;
+  orderBy: keyof OrderByTypes | null;
+  loadMorePatients: () => void;
+  defineTypeOfSorting: (type: keyof OrderByTypes) => void;
+  setNatFilter: React.Dispatch<React.SetStateAction<NationalityList[]>>;
+  handleChangeNameFilter: (name: string) => void;
+  handleChangeGenderFilter: (gender: PatientGenders | null) => void;
+  handleChangePatientQuantity: (quantity: number) => void;
+>>>>>>> b101de6cdb8918067fa419f9016d761aa1e10eaa
 }
 
 const PatientContext = createContext({} as PatientContextData);
@@ -106,6 +127,10 @@ function PatientProvider(props: PatientProviderProps) {
         results = response.data.results;
       })
       .catch((error) => {
+<<<<<<< HEAD
+=======
+        console.log(error);
+>>>>>>> b101de6cdb8918067fa419f9016d761aa1e10eaa
         setErrorLoadingPatients(error);
       });
 
@@ -147,8 +172,13 @@ function PatientProvider(props: PatientProviderProps) {
           a.name.first.normalize("NFD").replace(/[\u0300-\u036f]/g, "") >
           b.name.first.normalize("NFD").replace(/[\u0300-\u036f]/g, "")
             ? 1
+<<<<<<< HEAD
             : b.name.first.normalize("NFD").replace(/[\u0300-\u036f]/g, "") >
               a.name.first.normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+=======
+            : b.name.last.normalize("NFD").replace(/[\u0300-\u036f]/g, "") >
+              a.name.last.normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+>>>>>>> b101de6cdb8918067fa419f9016d761aa1e10eaa
             ? -1
             : 0
         );
@@ -157,8 +187,13 @@ function PatientProvider(props: PatientProviderProps) {
           a.name.first.normalize("NFD").replace(/[\u0300-\u036f]/g, "") <
           b.name.first.normalize("NFD").replace(/[\u0300-\u036f]/g, "")
             ? 1
+<<<<<<< HEAD
             : b.name.first.normalize("NFD").replace(/[\u0300-\u036f]/g, "") <
               a.name.first.normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+=======
+            : b.name.last.normalize("NFD").replace(/[\u0300-\u036f]/g, "") <
+              a.name.last.normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+>>>>>>> b101de6cdb8918067fa419f9016d761aa1e10eaa
             ? -1
             : 0
         );

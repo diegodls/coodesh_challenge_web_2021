@@ -5,7 +5,10 @@ import {
   act,
   renderHook,
   cleanup,
+<<<<<<< HEAD
   queryByText,
+=======
+>>>>>>> b101de6cdb8918067fa419f9016d761aa1e10eaa
 } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import {
@@ -13,6 +16,7 @@ import {
   PatientProvider,
   PatientContext,
 } from "./usePatientsContext";
+<<<<<<< HEAD
 import {
   API_PATIENT_QUANTITY,
   TIMEOUT_INTERVAL_ACTION,
@@ -22,6 +26,15 @@ import {
 describe("usePatientContext", () => {
   afterEach(cleanup);
 
+=======
+
+const API_PATIENT_QUANTITY = 50;
+const TIMEOUT_INTERVAL_ACTION = 1000;
+const TIMEOUT_INTERVAL_WAIT = 2000;
+afterEach(cleanup);
+
+describe("usePatientContext", () => {
+>>>>>>> b101de6cdb8918067fa419f9016d761aa1e10eaa
   it("nameFilter is empty by default", () => {
     const { getByText } = render(
       <PatientProvider>
