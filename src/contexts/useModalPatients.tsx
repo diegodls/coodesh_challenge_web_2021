@@ -12,7 +12,7 @@ interface PatientModalProviderProps {
   children: ReactNode;
 }
 
-interface PatientModalContextData {
+export interface PatientModalContextData {
   currentModalPatient: PatientFullData | null;
   openPatientModal: boolean;
   setPatient: (patient: PatientFullData | null) => void;
