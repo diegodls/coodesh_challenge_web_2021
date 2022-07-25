@@ -1,5 +1,24 @@
 import { render, screen, waitFor } from "../test/testing-library-utils";
+import userEvent from "@testing-library/user-event";
+
 import { PatientTable } from "./PatientTable";
+
+import * as PatientModalContext from "../contexts/useModalPatients";
+import { patientListOnePageMock } from "../test/patientListMock";
+import { API_PATIENT_QUANTITY } from "../utils/constants";
+
+const setPatientMockFunc = jest.fn();
+const mockContextValues: PatientModalContext.PatientModalContextData = {
+  currentModalPatient: patientListOnePageMock.results[0],
+  openPatientModal: true,
+  setPatient: setPatientMockFunc,
+  handleClose: jest.fn(),
+  setOpenPatientModal: jest.fn(),
+};
+
+jest
+  .spyOn(PatientModalContext, "usePatientModal")
+  .mockImplementation(() => mockContextValues);
 
 describe("Testing PatientTable.tsx", () => {
   it("should render a table", async () => {
@@ -33,10 +52,10 @@ describe("Testing PatientTable.tsx", () => {
     render(<PatientTable />);
 
     const row = await screen.findAllByText(/Detalhes/i);
-    expect(row).toHaveLength(10);
+    expect(row).toHaveLength(API_PATIENT_QUANTITY);
 
     waitFor(() => {
-      expect(screen.findAllByRole("row")).toHaveLength(10);
+      expect(screen.findAllByRole("row")).toHaveLength(API_PATIENT_QUANTITY);
     });
 
     let row2: HTMLElement[];
@@ -44,7 +63,18 @@ describe("Testing PatientTable.tsx", () => {
     row2 = await screen.findAllByRole("row");
 
     waitFor(() => {
-      expect(row2).toHaveLength(10);
+      expect(row2).toHaveLength(API_PATIENT_QUANTITY);
     });
+  });
+
+  it("should render details button", async () => {
+    render(<PatientTable />);
+
+    const detailsButton = await screen.findAllByText(/Detalhes/i);
+    expect(detailsButton).toHaveLength(API_PATIENT_QUANTITY);
+
+    await userEvent.click(detailsButton[0]);
+
+    expect(setPatientMockFunc).toHaveBeenCalled();
   });
 });
