@@ -12,10 +12,6 @@ export const PatientTable = () => {
 
   const { filteredPatientsList } = usePatientContext();
 
-  function viewPatientDetails(patient: PatientFullData): void {
-    setPatient(patient);
-  }
-
   return (
     <div className='w-full h-[440px] rounded border border-solid border-pharma-border_enable overflow-auto scrollbar-thumb-zinc-500 hover:scrollbar-thumb-zinc-700 scrollbar-track-transparent scrollbar-thin'>
       <table
@@ -73,7 +69,7 @@ export const PatientTable = () => {
                     aria-label={`show ${patient.name.first} ${patient.name.last} details`}
                     name='Detalhes'
                     onClick={() => {
-                      viewPatientDetails(patient);
+                      setPatient(patient);
                     }}
                   >
                     Detalhes
