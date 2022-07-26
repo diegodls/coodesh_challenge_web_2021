@@ -34,6 +34,7 @@ export interface PatientContextData {
   orderBy: keyof OrderByTypes | null;
   patientsList: PatientFullData[] | null;
   defineTypeOfSorting: (type: keyof OrderByTypes) => void;
+  handleApplyFilters: () => void;
   handleChangeGenderFilter: (gender: PatientGenders | null) => void;
   handleChangeNameFilter: (name: string) => void;
   handleChangePatientQuantity: (quantity: number) => void;
@@ -237,6 +238,12 @@ function PatientProvider(props: PatientProviderProps) {
     setCurrentFilters(newFilters);
   }
 
+  function handleApplyFilters() {
+    if (lastFilters !== currentFilters) {
+      loadMorePatients();
+    }
+  }
+
   useEffect(() => {
     handleUrlFiltersQuery();
   }, [genderFilter, natFilter]);
@@ -266,6 +273,7 @@ function PatientProvider(props: PatientProviderProps) {
           orderBy,
           loadMorePatients,
           defineTypeOfSorting,
+          handleApplyFilters,
           handleChangeGenderFilter,
           setNatFilter,
           handleChangeNameFilter,
@@ -279,7 +287,7 @@ function PatientProvider(props: PatientProviderProps) {
 }
 
 function usePatientContext() {
-  const context = useContext(PatientContext);
+  const context = useContext(PatientContext) || {};
 
   if (!context) {
     throw new Error("Erro ao usar contexto de Pacientes (PatientContext)");
