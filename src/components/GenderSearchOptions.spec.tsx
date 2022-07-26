@@ -1,6 +1,6 @@
 import { render, screen, waitFor } from "../test/testing-library-utils";
 import userEvent from "@testing-library/user-event";
-import GenderSearchOptions from "./genderSearchOptions";
+import GenderSearchOptions from "./GenderSearchOptions";
 
 describe("Testing GenderSearchOptions.tsx", () => {
   it("should show gender filters", () => {
