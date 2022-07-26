@@ -5,37 +5,23 @@ import {
 import userEvent from "@testing-library/user-event";
 
 import * as PatientContext from "../contexts/usePatientsContext";
+import { patientContextMockValues } from "../test/patientContextMocks";
 
 import { SortingButtonTable } from "./SortingButtonTable";
 
-const setTypeOfSorting = jest.fn();
-
-const mockContextValues: PatientContext.PatientContextData = {
-  errorLoadingPatients: "ErrorTest",
-  patientsList: null,
-  filteredPatientsList: null,
-  loadingPatients: false,
-  nameFilter: "",
-  genderFilter: null,
-  natFilter: [],
-  currentFilters: "",
-  lastFilters: "",
-  order: "asc",
-  orderBy: "name",
-  loadMorePatients: jest.fn(),
-  defineTypeOfSorting: setTypeOfSorting,
-  handleChangeGenderFilter: jest.fn(),
-  setNatFilter: jest.fn(),
-  handleChangeNameFilter: jest.fn(),
-  handleChangePatientQuantity: jest.fn(),
-};
-
-jest
-  .spyOn(PatientContext, "usePatientContext")
-  .mockImplementation(() => mockContextValues);
-
 describe("Testing SortingButtonTable.tsx", () => {
   it("should call setTypeOfSorting() function when clicked", async () => {
+    const setTypeOfSorting = jest.fn();
+
+    const mockContextValues: PatientContext.PatientContextData = {
+      ...patientContextMockValues,
+      defineTypeOfSorting: setTypeOfSorting,
+    };
+
+    jest
+      .spyOn(PatientContext, "usePatientContext")
+      .mockImplementation(() => mockContextValues);
+
     RTLRender(<SortingButtonTable name='Test' type='name' />);
 
     const sortingButton = RTLScreen.getByRole("button", { name: /test/i });
@@ -47,23 +33,47 @@ describe("Testing SortingButtonTable.tsx", () => {
     expect(setTypeOfSorting).toHaveBeenCalledTimes(1);
   });
 
-  it("should be able to call setTypeOfSorting() after changing from asc to desc", async () => {
-    const { rerender } = RTLRender(
-      <SortingButtonTable name='Test' type='name' />
-    );
+  it("should render ascending order property", async () => {
+    const mockContextValues: PatientContext.PatientContextData = {
+      ...patientContextMockValues,
+      order: "asc",
+      orderBy: "name",
+    };
 
-    const sortingButton = RTLScreen.getByRole("button", { name: /test/i });
+    jest
+      .spyOn(PatientContext, "usePatientContext")
+      .mockImplementation(() => mockContextValues);
 
-    expect(sortingButton).toBeInTheDocument();
+    RTLRender(<SortingButtonTable name='Test' type='name' />);
 
-    await userEvent.click(sortingButton);
+    const ascOrderText = await RTLScreen.findByText(/sorted ascending/i);
 
-    expect(setTypeOfSorting).toHaveBeenCalledTimes(1);
+    expect(ascOrderText).toBeInTheDocument();
 
-    rerender(<SortingButtonTable name='Test' type='name' />);
+    const descOrderText = RTLScreen.queryByText(/sorted descending/i);
 
-    await userEvent.click(sortingButton);
+    expect(descOrderText).not.toBeInTheDocument();
+  });
 
-    expect(setTypeOfSorting).toHaveBeenCalledTimes(2);
+  it("should render descending order property", async () => {
+    const mockContextValues: PatientContext.PatientContextData = {
+      ...patientContextMockValues,
+      order: "desc",
+      orderBy: "name",
+    };
+
+    jest
+      .spyOn(PatientContext, "usePatientContext")
+      .mockImplementation(() => mockContextValues);
+
+    RTLRender(<SortingButtonTable name='Test' type='name' />);
+
+    const descOrderText = await RTLScreen.findByText(/sorted descending/i);
+
+    expect(descOrderText).toBeInTheDocument();
+
+    const ascOrderText = RTLScreen.queryByText(/sorted ascending/i);
+
+    expect(ascOrderText).not.toBeInTheDocument();
   });
 });
