@@ -2,35 +2,21 @@ import {
   render as RTLRender,
   screen as RTLScreen,
 } from "@testing-library/react";
+import "intersection-observer";
 import { ErrorOnFetchPatients } from "./ErrorOnFetchPatients";
 import * as PatientContext from "../contexts/usePatientsContext";
-import "intersection-observer";
+import { patientContextMockValues } from "../test/patientContextMocks";
 
 describe("Testing LoadingPatients.tsx", () => {
   it("should display error message", async () => {
-    const contextValues: PatientContext.PatientContextData = {
+    const mockContextValues: PatientContext.PatientContextData = {
+      ...patientContextMockValues,
       errorLoadingPatients: "ErrorTest",
-      patientsList: null,
-      filteredPatientsList: null,
-      loadingPatients: false,
-      nameFilter: "",
-      genderFilter: null,
-      natFilter: [],
-      currentFilters: "",
-      lastFilters: "",
-      order: "asc",
-      orderBy: "name",
-      loadMorePatients: jest.fn(),
-      defineTypeOfSorting: jest.fn(),
-      handleChangeGenderFilter: jest.fn(),
-      setNatFilter: jest.fn(),
-      handleChangeNameFilter: jest.fn(),
-      handleChangePatientQuantity: jest.fn(),
     };
 
     jest
       .spyOn(PatientContext, "usePatientContext")
-      .mockImplementation(() => contextValues);
+      .mockImplementation(() => mockContextValues);
 
     RTLRender(<ErrorOnFetchPatients />);
 
