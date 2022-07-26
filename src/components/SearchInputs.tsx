@@ -9,15 +9,10 @@ import NameSearchOption from "./NameSearchOption";
 import GenderSearchOptions from "./GenderSearchOptions";
 
 export default function SearchInputs() {
-  const { currentFilters, lastFilters, loadMorePatients } = usePatientContext();
+  const { currentFilters, lastFilters, handleApplyFilters } =
+    usePatientContext();
 
   const [openFilterList, setOpenFilterList] = useState<boolean>(false);
-
-  function handleApplyFilters() {
-    if (lastFilters !== currentFilters) {
-      loadMorePatients();
-    }
-  }
 
   return (
     <Disclosure>
