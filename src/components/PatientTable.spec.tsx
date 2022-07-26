@@ -4,7 +4,7 @@ import userEvent from "@testing-library/user-event";
 import { PatientTable } from "./PatientTable";
 
 import * as PatientModalContext from "../contexts/useModalPatients";
-import { patientListOnePageMock } from "../test/patientListMock";
+import { patientListOnePageMock } from "../test/patientContextMocks";
 import { API_PATIENT_QUANTITY } from "../utils/constants";
 
 const setPatientMockFunc = jest.fn();
