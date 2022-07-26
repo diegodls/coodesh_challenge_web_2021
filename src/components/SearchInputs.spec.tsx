@@ -6,23 +6,8 @@ import * as PatientContext from "../contexts/usePatientsContext";
 const handleLoadMore = jest.fn();
 
 const mockContextValues: PatientContext.PatientContextData = {
-  errorLoadingPatients: "ErrorTest",
-  patientsList: null,
-  filteredPatientsList: null,
-  loadingPatients: false,
-  nameFilter: "",
-  genderFilter: null,
-  natFilter: [],
-  currentFilters: "",
-  lastFilters: "",
-  order: "asc",
-  orderBy: "name",
-  loadMorePatients: handleLoadMore,
-  defineTypeOfSorting: jest.fn(),
-  handleChangeGenderFilter: jest.fn(),
-  setNatFilter: jest.fn(),
-  handleChangeNameFilter: jest.fn(),
-  handleChangePatientQuantity: jest.fn(),
+  ...patientContextMockValues,
+  handleApplyFilters: handleLoadMore,
 };
 
 jest
@@ -30,6 +15,7 @@ jest
   .mockImplementation(() => mockContextValues);
 
 import SearchInputs from "./SearchInputs";
+import { patientContextMockValues } from "../test/patientContextMocks";
 
 describe("Testing SearchInputs component", () => {
   it("should render name search by name input", async () => {
@@ -183,6 +169,8 @@ describe("Testing SearchInputs component", () => {
   });
 
   it("should be able to apply filters", async () => {
+    //Todo refazer esse teste
+
     render(<SearchInputs />);
 
     const showFiltersButton = screen.getByRole("button", {
@@ -208,6 +196,14 @@ describe("Testing SearchInputs component", () => {
 
     waitFor(() => {
       expect(applyButton).not.toBeDisabled();
+    });
+
+    waitFor(() => {
+      userEvent.click(applyButton);
+    });
+
+    waitFor(() => {
+      expect(handleLoadMore).toHaveBeenCalledTimes(1);
     });
   });
 });
