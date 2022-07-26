@@ -5,7 +5,6 @@ import {
   act,
   renderHook,
   cleanup,
-  queryByText,
 } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import {
@@ -21,6 +20,19 @@ import {
 
 describe("usePatientContext", () => {
   afterEach(cleanup);
+
+  it("should throw error when no context are provided", async () => {
+    function TestComponent() {
+      const { order, loadMorePatients } = usePatientContext();
+      return (
+        <>
+          <p>Order: {order}</p>
+          <button onClick={loadMorePatients}>Loading More</button>
+        </>
+      );
+    }
+    expect(render(<TestComponent />)).toThrowError();
+  });
 
   it("nameFilter is empty by default", () => {
     const { getByText } = render(
