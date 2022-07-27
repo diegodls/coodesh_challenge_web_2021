@@ -314,4 +314,27 @@ describe("usePatientContext", () => {
       { timeout: TIMEOUT_INTERVAL_WAIT }
     );
   });
+
+  it("should be able to load more after change filters", async () => {
+    const wrapper = ({ children }: any) => (
+      <PatientProvider>{children}</PatientProvider>
+    );
+    const { result } = renderHook(() => usePatientContext(), { wrapper });
+
+    await waitFor(() => {
+      expect(result.current.patientsList?.length).toBe(API_PATIENT_QUANTITY);
+    });
+
+    act(() => {
+      result.current.handleChangeGenderFilter("male");
+    });
+
+    act(() => {
+      result.current.handleApplyFilters();
+    });
+
+    await waitFor(() => {
+      expect(result.current.currentFilters).toBe("&gender=male");
+    });
+  });
 });
