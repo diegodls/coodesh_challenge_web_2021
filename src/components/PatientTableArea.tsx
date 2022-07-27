@@ -17,15 +17,7 @@ export const PatientTableArea = () => {
     loadMorePatients,
   } = usePatientContext();
 
-  let component: ReactElement = <PatientTable />;
-
-  if (
-    loadingPatients &&
-    filteredPatientsList &&
-    filteredPatientsList?.length <= 0
-  ) {
-    component = <LoadingFetchPatients />;
-  }
+  let component: ReactElement = <LoadingFetchPatients />;
 
   if (errorLoadingPatients) {
     component = <ErrorOnFetchPatients />;
@@ -35,9 +27,17 @@ export const PatientTableArea = () => {
     !loadingPatients &&
     !errorLoadingPatients &&
     filteredPatientsList &&
-    filteredPatientsList.length === 0
+    filteredPatientsList.length <= 0
   ) {
     component = <ErrorPatientNotFound />;
+  }
+
+  if (
+    !loadingPatients &&
+    filteredPatientsList &&
+    filteredPatientsList?.length > 0
+  ) {
+    component = <PatientTable />;
   }
 
   return (
