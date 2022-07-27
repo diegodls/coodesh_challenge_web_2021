@@ -4,21 +4,11 @@ import userEvent from "@testing-library/user-event";
 import { PatientTable } from "./PatientTable";
 
 import * as PatientModalContext from "../contexts/useModalPatients";
-import { patientListOnePageMock } from "../test/patientContextMocks";
+import {
+  modalContextMockValues,
+  patientListOnePageMock,
+} from "../test/patientMocks";
 import { API_PATIENT_QUANTITY } from "../utils/constants";
-
-const setPatientMockFunc = jest.fn();
-const mockContextValues: PatientModalContext.PatientModalContextData = {
-  currentModalPatient: patientListOnePageMock.results[0],
-  openPatientModal: true,
-  setPatient: setPatientMockFunc,
-  handleClose: jest.fn(),
-  setOpenPatientModal: jest.fn(),
-};
-
-jest
-  .spyOn(PatientModalContext, "usePatientModal")
-  .mockImplementation(() => mockContextValues);
 
 describe("Testing PatientTable.tsx", () => {
   it("should render a table", async () => {
@@ -68,6 +58,19 @@ describe("Testing PatientTable.tsx", () => {
   });
 
   it("should render details button", async () => {
+    const setPatientMockFunc = jest.fn();
+
+    const mockContextValues: PatientModalContext.PatientModalContextData = {
+      ...modalContextMockValues,
+      currentModalPatient: patientListOnePageMock.results[0],
+      openPatientModal: true,
+      setPatient: setPatientMockFunc,
+    };
+
+    jest
+      .spyOn(PatientModalContext, "usePatientModal")
+      .mockImplementation(() => mockContextValues);
+
     render(<PatientTable />);
 
     const detailsButton = await screen.findAllByText(/Detalhes/i);
