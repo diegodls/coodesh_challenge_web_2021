@@ -55,12 +55,8 @@ interface PatientLocation {
   };
   city: string;
   state: string;
-<<<<<<< HEAD
   country: string;
   postcode: string | number;
-=======
-  postcode: string;
->>>>>>> b101de6cdb8918067fa419f9016d761aa1e10eaa
   coordinates: {
     latitude: string;
     longitude: string;
@@ -86,18 +82,10 @@ export interface PatientFullData {
   cell: string;
   id: {
     name: string;
-<<<<<<< HEAD
     value: string | null;
   };
   picture: PatientPicture;
   nat: NationalityList;
-=======
-    value: string;
-  };
-  picture: PatientPicture;
-  nat: NationalityList;
-  page: number;
->>>>>>> b101de6cdb8918067fa419f9016d761aa1e10eaa
 }
 
 export interface ApiResponseComplete {
@@ -106,11 +94,7 @@ export interface ApiResponseComplete {
     seed: string;
     results: number;
     page: number;
-<<<<<<< HEAD
     version: string;
-=======
-    version: number;
->>>>>>> b101de6cdb8918067fa419f9016d761aa1e10eaa
   };
 }
 
