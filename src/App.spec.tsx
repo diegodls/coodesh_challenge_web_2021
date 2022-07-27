@@ -9,8 +9,8 @@ describe("App Component", () => {
   });
 
   it("should have search by name input", () => {
-    const { getByTestId } = render(<App />);
-    expect(getByTestId("searchByName")).toBeInTheDocument();
+    const { getByPlaceholderText } = render(<App />);
+    expect(getByPlaceholderText(/Pesquisar paciente.../i)).toBeInTheDocument();
   });
 
   it("should be able to load more patients", () => {
