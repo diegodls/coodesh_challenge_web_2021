@@ -7,7 +7,7 @@ import "intersection-observer";
 import PatientModal from "./PatientModal";
 import * as ModalContext from "../contexts/useModalPatients";
 import { PatientFullData } from "../interfaces/IPatient";
-import { patientListOnePageMock } from "../test/patientContextMocks";
+import { patientListOnePageMock } from "../test/patientMocks";
 
 const femalePatient: PatientFullData = patientListOnePageMock.results[0];
 const malePatient: PatientFullData = patientListOnePageMock.results[1];

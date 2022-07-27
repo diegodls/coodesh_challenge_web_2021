@@ -1,4 +1,4 @@
-import { patientListOnePageMock } from "../test/patientContextMocks";
+import { patientListOnePageMock } from "../test/patientMocks";
 import { PatientFullData } from "../interfaces/IPatient";
 
 export const API_PATIENT_QUANTITY: number = 10;

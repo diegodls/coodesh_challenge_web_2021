@@ -15,7 +15,7 @@ jest
   .mockImplementation(() => mockContextValues);
 
 import SearchInputs from "./SearchInputs";
-import { patientContextMockValues } from "../test/patientContextMocks";
+import { patientContextMockValues } from "../test/patientMocks";
 
 describe("Testing SearchInputs component", () => {
   it("should render name search by name input", async () => {

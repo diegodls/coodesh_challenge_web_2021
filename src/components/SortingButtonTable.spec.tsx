@@ -5,7 +5,7 @@ import {
 import userEvent from "@testing-library/user-event";
 
 import * as PatientContext from "../contexts/usePatientsContext";
-import { patientContextMockValues } from "../test/patientContextMocks";
+import { patientContextMockValues } from "../test/patientMocks";
 
 import { SortingButtonTable } from "./SortingButtonTable";
 

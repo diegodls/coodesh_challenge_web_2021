@@ -1,4 +1,4 @@
-import { patientListOnePageMock } from "./patientContextMocks";
+import { patientListOnePageMock } from "./patientMocks";
 import { rest } from "msw";
 import { ApiResponseComplete } from "../interfaces/IPatient";
 

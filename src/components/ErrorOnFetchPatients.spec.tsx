@@ -5,7 +5,7 @@ import {
 import "intersection-observer";
 import { ErrorOnFetchPatients } from "./ErrorOnFetchPatients";
 import * as PatientContext from "../contexts/usePatientsContext";
-import { patientContextMockValues } from "../test/patientContextMocks";
+import { patientContextMockValues } from "../test/patientMocks";
 
 describe("Testing LoadingPatients.tsx", () => {
   it("should display error message", async () => {
