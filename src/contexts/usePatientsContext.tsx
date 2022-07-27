@@ -287,7 +287,7 @@ function PatientProvider(props: PatientProviderProps) {
 }
 
 function usePatientContext() {
-  const context = useContext(PatientContext) || {};
+  const context = useContext(PatientContext);
 
   if (!context) {
     throw new Error("Erro ao usar contexto de Pacientes (PatientContext)");
