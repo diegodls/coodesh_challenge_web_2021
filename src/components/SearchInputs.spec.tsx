@@ -2,20 +2,8 @@ import { render, screen, waitFor } from "../test/testing-library-utils";
 import userEvent from "@testing-library/user-event";
 
 import * as PatientContext from "../contexts/usePatientsContext";
-
-const handleLoadMore = jest.fn();
-
-const mockContextValues: PatientContext.PatientContextData = {
-  ...patientContextMockValues,
-  handleApplyFilters: handleLoadMore,
-};
-
-jest
-  .spyOn(PatientContext, "usePatientContext")
-  .mockImplementation(() => mockContextValues);
-
-import SearchInputs from "./SearchInputs";
 import { patientContextMockValues } from "../test/patientMocks";
+import SearchInputs from "./SearchInputs";
 
 describe("Testing SearchInputs component", () => {
   it("should render name search by name input", async () => {
@@ -169,7 +157,16 @@ describe("Testing SearchInputs component", () => {
   });
 
   it("should be able to apply filters", async () => {
-    //Todo refazer esse teste
+    const handleLoadMore = jest.fn();
+
+    const patientMockContextValues: PatientContext.PatientContextData = {
+      ...patientContextMockValues,
+      handleApplyFilters: handleLoadMore,
+    };
+
+    jest
+      .spyOn(PatientContext, "usePatientContext")
+      .mockImplementation(() => patientMockContextValues);
 
     render(<SearchInputs />);
 
@@ -179,9 +176,14 @@ describe("Testing SearchInputs component", () => {
 
     expect(showFiltersButton).toBeInTheDocument();
 
-    await userEvent.click(showFiltersButton);
+    waitFor(() => {
+      userEvent.click(showFiltersButton);
+    });
 
-    const applyButton = await screen.findByRole("button", { name: /filtrar/i });
+    const applyButton = await screen.findByRole("button", {
+      name: /filtrar/i,
+    });
+
     expect(applyButton).toBeInTheDocument();
 
     expect(applyButton).toBeDisabled();
