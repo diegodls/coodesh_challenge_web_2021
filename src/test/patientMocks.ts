@@ -1,8 +1,9 @@
+import { PatientModalContextData } from "../contexts/useModalPatients";
 import { PatientContextData } from "../contexts/usePatientsContext";
 import { ApiResponseComplete } from "../interfaces/IPatient";
 
 export const patientContextMockValues: PatientContextData = {
-  errorLoadingPatients: "ErrorTest",
+  errorLoadingPatients: "",
   patientsList: null,
   filteredPatientsList: null,
   loadingPatients: false,
@@ -20,6 +21,14 @@ export const patientContextMockValues: PatientContextData = {
   setNatFilter: jest.fn(),
   handleChangeNameFilter: jest.fn(),
   handleChangePatientQuantity: jest.fn(),
+};
+
+export const modalContextMockValues: PatientModalContextData = {
+  currentModalPatient: null,
+  openPatientModal: false,
+  setPatient: jest.fn(),
+  handleClose: jest.fn(),
+  setOpenPatientModal: jest.fn(),
 };
 
 export const patientListOnePageMock: ApiResponseComplete = {
