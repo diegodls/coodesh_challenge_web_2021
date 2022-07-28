@@ -17,6 +17,9 @@ import {
   TIMEOUT_INTERVAL_ACTION,
   TIMEOUT_INTERVAL_WAIT,
 } from "../utils/constants";
+import { server } from "../test/server";
+import { rest } from "msw";
+import { patientListOnePageMock } from "../test/patientMocks";
 
 describe("usePatientContext", () => {
   afterEach(cleanup);
@@ -205,18 +208,24 @@ describe("usePatientContext", () => {
   });
 
   it("should be able order the list by name", async () => {
+    server.use(
+      rest.get(
+        "https://randomuser.me/api/?results=50&page=1",
+        (req, res, ctx) => {
+          return res.once(
+            ctx.status(200),
+            ctx.json({
+              ...patientListOnePageMock,
+            })
+          );
+        }
+      )
+    );
+
     const wrapper = ({ children }: any) => (
       <PatientProvider>{children}</PatientProvider>
     );
     const { result } = renderHook(() => usePatientContext(), { wrapper });
-
-    act(() => {
-      result.current.handleChangePatientQuantity(200);
-    });
-
-    act(() => {
-      result.current.handleChangeNameFilter("A");
-    });
 
     setTimeout(() => {
       act(() => {
@@ -335,6 +344,31 @@ describe("usePatientContext", () => {
 
     await waitFor(() => {
       expect(result.current.currentFilters).toBe("&gender=male");
+    });
+  });
+
+  it("should set error on api error", async () => {
+    server.use(
+      rest.get(
+        "https://randomuser.me/api/?results=50&page=1",
+        (req, res, ctx) => {
+          return res.once(
+            ctx.status(401),
+            ctx.json({
+              error: "error",
+            })
+          );
+        }
+      )
+    );
+
+    const wrapper = ({ children }: any) => (
+      <PatientProvider>{children}</PatientProvider>
+    );
+    const { result } = renderHook(() => usePatientContext(), { wrapper });
+
+    await waitFor(() => {
+      expect(result.current.errorLoadingPatients).toBe("error");
     });
   });
 });
