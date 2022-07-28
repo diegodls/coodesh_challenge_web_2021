@@ -19,7 +19,7 @@ export const PatientTableArea = () => {
 
   let component: ReactElement = <LoadingFetchPatients />;
 
-  if (errorLoadingPatients) {
+  if (!loadingPatients && errorLoadingPatients) {
     component = <ErrorOnFetchPatients />;
   }
 
@@ -32,11 +32,7 @@ export const PatientTableArea = () => {
     component = <ErrorPatientNotFound />;
   }
 
-  if (
-    !loadingPatients &&
-    filteredPatientsList &&
-    filteredPatientsList?.length > 0
-  ) {
+  if (filteredPatientsList && filteredPatientsList?.length > 0) {
     component = <PatientTable />;
   }
 
