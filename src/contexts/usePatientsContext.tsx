@@ -107,7 +107,7 @@ function PatientProvider(props: PatientProviderProps) {
         results = response.data.results;
       })
       .catch((error) => {
-        setErrorLoadingPatients(error);
+        setErrorLoadingPatients(error.response.data.error);
       });
 
     return results;
@@ -141,25 +141,45 @@ function PatientProvider(props: PatientProviderProps) {
     setOrderBy(type);
   }
 
+  function normalizeSortingName(name: string): string {
+    return name
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "")
+      .toLowerCase()
+      .toLowerCase();
+  }
+
   function sortArrayByType(array: PatientFullData[]): PatientFullData[] {
     if (orderBy === "name") {
       if (order === "asc") {
         array.sort((a, b) =>
-          a.name.first.normalize("NFD").replace(/[\u0300-\u036f]/g, "") >
-          b.name.first.normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+          normalizeSortingName(a.name.first) >
+          normalizeSortingName(b.name.first)
             ? 1
-            : b.name.first.normalize("NFD").replace(/[\u0300-\u036f]/g, "") >
-              a.name.first.normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+            : normalizeSortingName(b.name.first) >
+              normalizeSortingName(a.name.first)
+            ? -1
+            : normalizeSortingName(a.name.last) >
+              normalizeSortingName(b.name.last)
+            ? 1
+            : normalizeSortingName(b.name.last) >
+              normalizeSortingName(a.name.last)
             ? -1
             : 0
         );
       } else {
         array.sort((a, b) =>
-          a.name.first.normalize("NFD").replace(/[\u0300-\u036f]/g, "") <
-          b.name.first.normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+          normalizeSortingName(a.name.first) <
+          normalizeSortingName(b.name.first)
             ? 1
-            : b.name.first.normalize("NFD").replace(/[\u0300-\u036f]/g, "") <
-              a.name.first.normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+            : normalizeSortingName(b.name.first) <
+              normalizeSortingName(a.name.first)
+            ? -1
+            : normalizeSortingName(a.name.last) <
+              normalizeSortingName(b.name.last)
+            ? 1
+            : normalizeSortingName(b.name.last) <
+              normalizeSortingName(a.name.last)
             ? -1
             : 0
         );
