@@ -49,7 +49,7 @@ export default function NationalitySearchOptions() {
               >
                 <input
                   type='checkbox'
-                  value=''
+                  value={country}
                   id={`${country}countryCheckbox`}
                   checked={natFilter?.includes(country)}
                   onChange={(e) => {

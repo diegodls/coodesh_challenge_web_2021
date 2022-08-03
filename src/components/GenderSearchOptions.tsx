@@ -22,6 +22,7 @@ export default function GenderSearchOptions() {
           aria-label='Buscar somente por feminino'
           type='checkbox'
           id='femaleGenderCheckbox'
+          value='Feminino'
           checked={genderFilter === "female"}
           onChange={(e) => {
             handleGenderChange(e);
@@ -34,6 +35,7 @@ export default function GenderSearchOptions() {
           name='male'
           aria-label='Buscar somente por masculino'
           id='maleGenderCheckbox'
+          value='Masculino'
           type='checkbox'
           checked={genderFilter === "male"}
           onChange={(e) => {
