@@ -3,9 +3,9 @@
   "compilerOptions": {
     "target": "es5",
     "lib": ["es5", "dom"],
-    "types": ["cypress", "node"]
+    "types": ["cypress", "node"],
+    "isolatedModules": false
     //"noEmit": true,
-    //"isolatedModules": false
   },
-  "include": ["../node_modules/cypress", "**/*.ts"]
+  "include": ["../node_modules/cypress", "**/*.ts", "**/*.tsx"]
 }
