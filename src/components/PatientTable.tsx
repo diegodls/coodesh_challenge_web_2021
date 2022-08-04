@@ -50,17 +50,14 @@ export const PatientTable = () => {
           </tr>
         </thead>
         <tbody>
-          {filteredPatientsList?.map((patient: PatientFullData, index) => {
-            const labelId = `enhanced-table-checkdiv-${index}`;
+          {filteredPatientsList?.map((patient: PatientFullData, _) => {
             return (
               <tr
-                role='checkdiv'
-                tabIndex={-1}
                 key={patient.login.uuid}
                 className='h-10 border-t border-solid border-pharma-border_enable'
               >
-                <td id={labelId} scope='row'>
-                  {patient.name.first} {patient.name.last} - {patient.nat}
+                <td scope='row'>
+                  {patient.name.first} {patient.name.last}
                 </td>
                 <td align='center'>{patient.gender}</td>
                 <td align='center'>{formatDate(patient.dob.date)}</td>
