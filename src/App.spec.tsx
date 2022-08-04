@@ -1,6 +1,6 @@
 import { render } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import App from "./App";
+import { App } from "./App";
 
 describe("App Component", () => {
   it("Pharma Inc. is on DOM", () => {

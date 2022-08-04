@@ -1,7 +1,7 @@
 import userEvent from "@testing-library/user-event";
 import { render, screen } from "../test/testing-library-utils";
 
-import NameSearchOption from "./NameSearchOption";
+import { NameSearchOption } from "./NameSearchOption";
 
 describe("Testing NameSearchOption.tsx", () => {
   it("should render a text input", () => {

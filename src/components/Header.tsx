@@ -1,7 +1,7 @@
 import { User } from "phosphor-react";
-import Logo from "../assets/svg/logo";
+import { Logo } from "../assets/svg/logo";
 
-export default function Header() {
+export function Header() {
   return (
     <>
       <div className='w-full flex justify-center items-center bg-pharma-secondary'>

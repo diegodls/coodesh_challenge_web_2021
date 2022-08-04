@@ -1,4 +1,4 @@
-import { OrderByTypes, PatientFullData } from "../interfaces/IPatient";
+import { PatientFullData } from "../interfaces/IPatient";
 
 import { usePatientContext } from "../contexts/usePatientsContext";
 
@@ -7,7 +7,7 @@ import { usePatientModal } from "../contexts/useModalPatients";
 import { SortingButtonTable } from "./SortingButtonTable";
 import { formatDate } from "../utils/common-functions";
 
-export const PatientTable = () => {
+export function PatientTable() {
   const { setPatient } = usePatientModal();
 
   const { filteredPatientsList } = usePatientContext();
@@ -79,4 +79,4 @@ export const PatientTable = () => {
       </table>
     </div>
   );
-};
+}

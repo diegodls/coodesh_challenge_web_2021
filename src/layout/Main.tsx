@@ -1,10 +1,10 @@
-import Header from "../components/Header";
+import { Header } from "../components/Header";
 
 type MainProps = {
   children: React.ReactNode;
 };
 
-function Main({ children }: MainProps) {
+export function Main({ children }: MainProps) {
   return (
     <>
       <div className='h-screen flex flex-col bg-pharma-primary overflow-auto'>
@@ -16,5 +16,3 @@ function Main({ children }: MainProps) {
     </>
   );
 }
-
-export default Main;

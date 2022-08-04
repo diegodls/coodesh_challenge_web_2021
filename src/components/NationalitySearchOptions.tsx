@@ -22,7 +22,7 @@ const natListT: NationalityList[] = [
   "US",
 ];
 
-export default function NationalitySearchOptions() {
+export function NationalitySearchOptions() {
   const { natFilter, setNatFilter } = usePatientContext();
 
   function handleNatChange(e: React.ChangeEvent<HTMLInputElement>) {

@@ -1,6 +1,3 @@
-import { rest } from "msw";
-import { ApiResponseComplete } from "../interfaces/IPatient";
-import { server } from "../test/server";
 import {
   render,
   screen,

@@ -3,12 +3,11 @@ import { Sliders } from "phosphor-react";
 import { usePatientContext } from "../contexts/usePatientsContext";
 import { Disclosure, Transition } from "@headlessui/react";
 
-import NationalitySearchOptions from "./NationalitySearchOptions";
+import { NationalitySearchOptions } from "./NationalitySearchOptions";
+import { NameSearchOption } from "./NameSearchOption";
+import { GenderSearchOptions } from "./GenderSearchOptions";
 
-import NameSearchOption from "./NameSearchOption";
-import GenderSearchOptions from "./GenderSearchOptions";
-
-export default function SearchInputs() {
+export function SearchInputs() {
   const { currentFilters, lastFilters, handleApplyFilters } =
     usePatientContext();
 

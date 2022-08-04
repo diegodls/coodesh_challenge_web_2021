@@ -3,7 +3,7 @@ import userEvent from "@testing-library/user-event";
 
 import * as PatientContext from "../contexts/usePatientsContext";
 import { patientContextMockValues } from "../test/patientMocks";
-import SearchInputs from "./SearchInputs";
+import { SearchInputs } from "./SearchInputs";
 
 describe("Testing SearchInputs component", () => {
   it("should render name search by name input", async () => {

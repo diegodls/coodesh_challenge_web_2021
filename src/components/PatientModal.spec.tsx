@@ -4,7 +4,7 @@ import {
 } from "@testing-library/react";
 import "intersection-observer";
 
-import PatientModal from "./PatientModal";
+import { PatientModal } from "./PatientModal";
 import * as ModalContext from "../contexts/useModalPatients";
 import { PatientFullData } from "../interfaces/IPatient";
 import { patientListOnePageMock } from "../test/patientMocks";

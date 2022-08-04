@@ -4,7 +4,7 @@ import { Fragment } from "react";
 import { usePatientModal } from "../contexts/useModalPatients";
 import { formatDate } from "../utils/common-functions";
 
-function PatientModal() {
+export function PatientModal() {
   const { currentModalPatient, openPatientModal, handleClose } =
     usePatientModal();
 
@@ -106,4 +106,3 @@ function PatientModal() {
     </>
   );
 }
-export default PatientModal;

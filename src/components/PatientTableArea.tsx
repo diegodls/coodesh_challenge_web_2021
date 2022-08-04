@@ -9,7 +9,7 @@ import { LoadingFetchPatients } from "./LoadingFetchPatients";
 import { PatientTable } from "./PatientTable";
 import { ErrorPatientNotFound } from "./ErrorPatientNotFound";
 
-export const PatientTableArea = () => {
+export function PatientTableArea() {
   const {
     filteredPatientsList,
     loadingPatients,
@@ -59,4 +59,4 @@ export const PatientTableArea = () => {
       </div>
     </div>
   );
-};
+}

@@ -1,8 +1,8 @@
-import PatientModal from "../components/PatientModal";
+import { PatientModal } from "../components/PatientModal";
 import { PatientTableArea } from "../components/PatientTableArea";
-import SearchInputs from "../components/SearchInputs";
+import { SearchInputs } from "../components/SearchInputs";
 
-const Home = () => {
+export function Home() {
   return (
     <div className='w-11/12 h-full flex flex-col items-center gap-2 px-3'>
       <p>
@@ -15,6 +15,4 @@ const Home = () => {
       <PatientModal />
     </div>
   );
-};
-
-export default Home;
+}

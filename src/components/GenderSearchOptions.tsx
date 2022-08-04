@@ -1,7 +1,7 @@
 import { usePatientContext } from "../contexts/usePatientsContext";
 import { PatientGenders } from "../interfaces/IPatient";
 
-export default function GenderSearchOptions() {
+export function GenderSearchOptions() {
   const { genderFilter, handleChangeGenderFilter } = usePatientContext();
 
   function handleGenderChange(e: React.ChangeEvent<HTMLInputElement>) {

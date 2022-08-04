@@ -1,7 +1,7 @@
-import { render, screen, waitFor } from "../test/testing-library-utils";
+import { render, screen } from "../test/testing-library-utils";
 import userEvent from "@testing-library/user-event";
 
-import NationalitySearchOptions from "./NationalitySearchOptions";
+import { NationalitySearchOptions } from "./NationalitySearchOptions";
 
 const NAT_AMOUNT = 17;
 

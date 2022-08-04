@@ -1,6 +1,6 @@
 import { usePatientContext } from "../contexts/usePatientsContext";
 
-export default function NameSearchOption() {
+export function NameSearchOption() {
   const { nameFilter, handleChangeNameFilter } = usePatientContext();
 
   function handleSearchTextChange(

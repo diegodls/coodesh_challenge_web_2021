@@ -2,10 +2,10 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { PatientModalProvider } from "./contexts/useModalPatients";
 import { PatientProvider } from "./contexts/usePatientsContext";
 
-import Main from "./layout/Main";
-import Home from "./pages/Home";
+import { Main } from "./layout/Main";
+import { Home } from "./pages/Home";
 
-function App() {
+export function App() {
   return (
     <PatientProvider>
       <PatientModalProvider>
@@ -20,5 +20,3 @@ function App() {
     </PatientProvider>
   );
 }
-
-export default App;
