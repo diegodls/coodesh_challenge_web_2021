@@ -10,10 +10,22 @@ describe("Testing Home", () => {
     //expand filters
     cy.get("button[aria-label='show-filters']").click();
 
-    //select filter
+    //select gender filter
     cy.get('[type="checkbox"]').check("Feminino");
-    //cy.get('[type="checkbox"]').check("US");
+
+    //select nationality filter
+    cy.get('[type="checkbox"]').check("BR");
+
     //click on search button
+    cy.get("button[aria-label='apply-filters']").click();
+
     //load more results
+    cy.get("button[aria-label='load-more-button']").click();
+
+    //open patient details modal
+    cy.get('table tbody tr').eq(-5).find('td').eq(3).click();
+    
+    //close patient details modal
+    cy.get("button[aria-label='close-modal']").click();
   });
 });
