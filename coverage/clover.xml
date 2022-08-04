@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1659535378829" clover="3.2.0">
-  <project timestamp="1659535378829" name="All files">
-    <metrics statements="1871" coveredstatements="1863" conditionals="170" coveredconditionals="166" methods="50" coveredmethods="50" elements="2091" coveredelements="2079" complexity="0" loc="1871" ncloc="1871" packages="9" files="25" classes="25"/>
+<coverage generated="1659634535409" clover="3.2.0">
+  <project timestamp="1659634535409" name="All files">
+    <metrics statements="1874" coveredstatements="1866" conditionals="170" coveredconditionals="166" methods="50" coveredmethods="50" elements="2094" coveredelements="2082" complexity="0" loc="1874" ncloc="1874" packages="9" files="25" classes="25"/>
     <package name="src">
       <metrics statements="24" coveredstatements="24" conditionals="1" coveredconditionals="1" methods="1" coveredmethods="1"/>
       <file name="App.tsx" path="C:\Users\TI\Documents\Meus\Estudos\1_PROJETOS\coodesh_front_end_challenge_2021\coodesh_challenge_web_2021\src\App.tsx">
@@ -64,7 +64,7 @@
       </file>
     </package>
     <package name="src.components">
-      <metrics statements="582" coveredstatements="582" conditionals="62" coveredconditionals="62" methods="23" coveredmethods="23"/>
+      <metrics statements="585" coveredstatements="585" conditionals="62" coveredconditionals="62" methods="23" coveredmethods="23"/>
       <file name="ErrorOnFetchPatients.tsx" path="C:\Users\TI\Documents\Meus\Estudos\1_PROJETOS\coodesh_front_end_challenge_2021\coodesh_challenge_web_2021\src\components\ErrorOnFetchPatients.tsx">
         <metrics statements="20" coveredstatements="20" conditionals="1" coveredconditionals="1" methods="1" coveredmethods="1"/>
         <line num="1" count="1" type="stmt"/>
@@ -106,7 +106,7 @@
         <line num="14" count="2" type="stmt"/>
       </file>
       <file name="GenderSearchOptions.tsx" path="C:\Users\TI\Documents\Meus\Estudos\1_PROJETOS\coodesh_front_end_challenge_2021\coodesh_challenge_web_2021\src\components\GenderSearchOptions.tsx">
-        <metrics statements="47" coveredstatements="47" conditionals="6" coveredconditionals="6" methods="4" coveredmethods="4"/>
+        <metrics statements="49" coveredstatements="49" conditionals="6" coveredconditionals="6" methods="4" coveredmethods="4"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
@@ -132,10 +132,10 @@
         <line num="23" count="36" type="stmt"/>
         <line num="24" count="36" type="stmt"/>
         <line num="25" count="36" type="stmt"/>
-        <line num="26" count="36" type="cond" truecount="1" falsecount="0"/>
-        <line num="27" count="4" type="stmt"/>
+        <line num="26" count="36" type="stmt"/>
+        <line num="27" count="36" type="cond" truecount="1" falsecount="0"/>
         <line num="28" count="4" type="stmt"/>
-        <line num="29" count="36" type="stmt"/>
+        <line num="29" count="4" type="stmt"/>
         <line num="30" count="36" type="stmt"/>
         <line num="31" count="36" type="stmt"/>
         <line num="32" count="36" type="stmt"/>
@@ -145,15 +145,17 @@
         <line num="36" count="36" type="stmt"/>
         <line num="37" count="36" type="stmt"/>
         <line num="38" count="36" type="stmt"/>
-        <line num="39" count="36" type="cond" truecount="1" falsecount="0"/>
-        <line num="40" count="4" type="stmt"/>
-        <line num="41" count="4" type="stmt"/>
-        <line num="42" count="36" type="stmt"/>
-        <line num="43" count="36" type="stmt"/>
+        <line num="39" count="36" type="stmt"/>
+        <line num="40" count="36" type="stmt"/>
+        <line num="41" count="36" type="cond" truecount="1" falsecount="0"/>
+        <line num="42" count="4" type="stmt"/>
+        <line num="43" count="4" type="stmt"/>
         <line num="44" count="36" type="stmt"/>
         <line num="45" count="36" type="stmt"/>
         <line num="46" count="36" type="stmt"/>
         <line num="47" count="36" type="stmt"/>
+        <line num="48" count="36" type="stmt"/>
+        <line num="49" count="36" type="stmt"/>
       </file>
       <file name="Header.tsx" path="C:\Users\TI\Documents\Meus\Estudos\1_PROJETOS\coodesh_front_end_challenge_2021\coodesh_challenge_web_2021\src\components\Header.tsx">
         <metrics statements="23" coveredstatements="23" conditionals="1" coveredconditionals="1" methods="1" coveredmethods="1"/>
@@ -564,7 +566,7 @@
         <line num="61" count="1" type="stmt"/>
       </file>
       <file name="SearchInputs.tsx" path="C:\Users\TI\Documents\Meus\Estudos\1_PROJETOS\coodesh_front_end_challenge_2021\coodesh_challenge_web_2021\src\components\SearchInputs.tsx">
-        <metrics statements="68" coveredstatements="68" conditionals="7" coveredconditionals="7" methods="2" coveredmethods="2"/>
+        <metrics statements="69" coveredstatements="69" conditionals="7" coveredconditionals="7" methods="2" coveredmethods="2"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
@@ -633,6 +635,7 @@
         <line num="66" count="27" type="stmt"/>
         <line num="67" count="27" type="stmt"/>
         <line num="68" count="27" type="stmt"/>
+        <line num="69" count="27" type="stmt"/>
       </file>
       <file name="SortingButtonTable.tsx" path="C:\Users\TI\Documents\Meus\Estudos\1_PROJETOS\coodesh_front_end_challenge_2021\coodesh_challenge_web_2021\src\components\SortingButtonTable.tsx">
         <metrics statements="46" coveredstatements="46" conditionals="15" coveredconditionals="15" methods="2" coveredmethods="2"/>
