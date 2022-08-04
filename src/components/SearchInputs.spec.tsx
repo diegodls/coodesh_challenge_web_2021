@@ -181,7 +181,7 @@ describe("Testing SearchInputs component", () => {
     });
 
     const applyButton = await screen.findByRole("button", {
-      name: /filtrar/i,
+      name: /apply-filters/i,
     });
 
     expect(applyButton).toBeInTheDocument();
