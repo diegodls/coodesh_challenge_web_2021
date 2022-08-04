@@ -52,6 +52,7 @@ export default function SearchInputs() {
                 <NationalitySearchOptions />
               </div>
               <button
+                aria-label='apply-filters'
                 title='Filtrar'
                 className='h-10 p-2 border border-solid border-pharma-enable rounded self-end bg-pharma-secondary hover:bg-pharma-primary focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-pharma_primary focus:ring-pharma-border-focus transition-colors disabled:opacity-50'
                 onClick={handleApplyFilters}
