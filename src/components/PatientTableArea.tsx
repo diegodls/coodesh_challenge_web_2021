@@ -43,6 +43,7 @@ export const PatientTableArea = () => {
       </div>
       <div className='w-full flex flex-col items-center justify-center '>
         <button
+          aria-label='load-more-button'
           className='h-full flex flex-row items-center justify-center border-0 rounded gap-1 text-center disabled:opacity-50'
           onClick={loadMorePatients}
           disabled={loadingPatients}

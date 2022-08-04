@@ -35,7 +35,7 @@ function PatientModal() {
             <Dialog.Panel>
               <div className='max-w-[500px] bg-pharma-secondary rounded px-3 relative'>
                 <div className='absolute flex items-center justify-center top-2 right-2'>
-                  <button onClick={handleClose}>
+                  <button aria-label='close-modal' onClick={handleClose}>
                     <X size={30} color='#78819B' weight='fill' />
                   </button>
                 </div>
