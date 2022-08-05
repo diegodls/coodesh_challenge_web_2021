@@ -13,7 +13,7 @@ export function NameSearchOption() {
     <input
       aria-label='Procurar por nome'
       type='search'
-      className='w-full h-10 mr-1 px-3 border border-solid border-pharma-disable rounded transition ease-in-out m-0 focus:text-pharma-txt_primary focus:bg-white focus:border-pharma-enabled focus:outline-none'
+      className='w-full h-10 mr-1 px-3 border border-solid border-pharma-border_disabled rounded transition ease-in-out m-0 hover:border-pharma-border_enabled focus:text-pharma-txt_primary focus:bg-white focus:border-pharma-enabled focus:outline-none'
       placeholder='Pesquisar paciente...'
       value={nameFilter}
       onChange={(
