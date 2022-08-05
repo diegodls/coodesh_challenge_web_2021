@@ -15,11 +15,10 @@ describe("Testing SearchInputs component", () => {
     expect(searchInput).toBeInTheDocument();
 
     userEvent.clear(searchInput);
-    userEvent.type(searchInput, "test");
 
-    waitFor(() => {
-      expect(searchInput.value).toBe("test");
-    });
+    await userEvent.type(searchInput, "test");
+
+    expect(searchInput.value).toBe("test");
   });
 
   it("should filters options starts hidden", async () => {
@@ -113,7 +112,7 @@ describe("Testing SearchInputs component", () => {
 
     expect(showFiltersButton).toBeInTheDocument();
 
-    userEvent.click(showFiltersButton);
+    await userEvent.click(showFiltersButton);
 
     const femaleCheckbox = await screen.findByRole("checkbox", {
       name: /feminino/i,
@@ -123,17 +122,13 @@ describe("Testing SearchInputs component", () => {
 
     expect(femaleCheckbox).not.toBeChecked();
 
-    userEvent.click(femaleCheckbox);
+    await userEvent.click(femaleCheckbox);
 
-    waitFor(() => {
-      expect(femaleCheckbox).toBeChecked();
-    });
+    expect(femaleCheckbox).toBeChecked();
 
-    userEvent.click(femaleCheckbox);
+    await userEvent.click(femaleCheckbox);
 
-    waitFor(() => {
-      expect(femaleCheckbox).not.toBeChecked();
-    });
+    expect(femaleCheckbox).not.toBeChecked();
 
     const maleCheckbox = await screen.findByRole("checkbox", {
       name: /feminino/i,
@@ -143,17 +138,13 @@ describe("Testing SearchInputs component", () => {
 
     expect(maleCheckbox).not.toBeChecked();
 
-    userEvent.click(maleCheckbox);
+    await userEvent.click(maleCheckbox);
 
-    waitFor(() => {
-      expect(maleCheckbox).toBeChecked();
-    });
+    expect(maleCheckbox).toBeChecked();
 
-    userEvent.click(maleCheckbox);
+    await userEvent.click(maleCheckbox);
 
-    waitFor(() => {
-      expect(maleCheckbox).not.toBeChecked();
-    });
+    expect(maleCheckbox).not.toBeChecked();
   });
 
   it("should be able to apply filters", async () => {
@@ -176,9 +167,7 @@ describe("Testing SearchInputs component", () => {
 
     expect(showFiltersButton).toBeInTheDocument();
 
-    waitFor(() => {
-      userEvent.click(showFiltersButton);
-    });
+    await userEvent.click(showFiltersButton);
 
     const applyButton = await screen.findByRole("button", {
       name: /apply-filters/i,
@@ -194,7 +183,7 @@ describe("Testing SearchInputs component", () => {
 
     expect(femaleCheckbox).toBeInTheDocument();
 
-    userEvent.click(femaleCheckbox);
+    await userEvent.click(femaleCheckbox);
 
     waitFor(() => {
       expect(applyButton).not.toBeDisabled();
