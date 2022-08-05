@@ -13,40 +13,27 @@ export function PatientTable() {
   const { filteredPatientsList } = usePatientContext();
 
   return (
-    <div className='w-full h-[440px] rounded border border-solid border-pharma-border_enable overflow-auto scrollbar-thumb-zinc-500 hover:scrollbar-thumb-zinc-700 scrollbar-track-transparent scrollbar-thin'>
+    <div className='w-full h-[440px] bg-pharma-secondary rounded border border-solid border-pharma-border_disabled overflow-auto scrollbar-thumb-zinc-500 hover:scrollbar-thumb-zinc-700 scrollbar-track-transparent scrollbar-thin'>
       <table
         aria-label='Tabela de pacientes'
         aria-labelledby='Tabela de pacientes'
-        className='w-full border-collapse table-fixed'
+        className='w-full border-collapse table-fixed bg-pharma-secondary'
       >
         <thead>
-          <tr className='h-10'>
-            <th
-              align='center'
-              className='sticky top-0 bg-pharma-border_disabled '
-            >
+          <tr className='h-10 sticky top-0 bg-pharma-secondary border-b border-solid border-pharma-border_disabled'>
+            <th align='center'>
               <SortingButtonTable name='Nome' type='name' />
             </th>
-            <th
-              align='center'
-              className='sticky top-0  bg-pharma-border_disabled '
-            >
+
+            <th align='center'>
               <SortingButtonTable name='Gênero' type='gender' />
             </th>
 
-            <th
-              align='center'
-              className='sticky top-0  bg-pharma-border_disabled '
-            >
+            <th align='center'>
               <SortingButtonTable name='Data de Nascimento' type='dob' />
             </th>
 
-            <th
-              align='center'
-              className='sticky top-0 bg-pharma-border_disabled '
-            >
-              Ações
-            </th>
+            <th align='center'>Ações</th>
           </tr>
         </thead>
         <tbody>
@@ -54,9 +41,9 @@ export function PatientTable() {
             return (
               <tr
                 key={patient.login.uuid}
-                className='h-10 border-t border-solid border-pharma-border_enable'
+                className='h-10 border-t border-solid border-pharma-border_disabled'
               >
-                <td scope='row'>
+                <td scope='row' className='pl-3'>
                   {patient.name.first} {patient.name.last}
                 </td>
                 <td align='center'>{patient.gender}</td>
@@ -68,6 +55,7 @@ export function PatientTable() {
                     onClick={() => {
                       setPatient(patient);
                     }}
+                    className='px-1 border border-solid border-pharma-enable rounded self-end bg-pharma-enabled text-pharma-primary hover:bg-pharma-hover'
                   >
                     Detalhes
                   </button>
