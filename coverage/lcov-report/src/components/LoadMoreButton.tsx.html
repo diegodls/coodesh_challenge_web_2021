@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for src/components/ErrorOnFetchPatients.tsx</title>
+    <title>Code coverage report for src/components/LoadMoreButton.tsx</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../prettify.css" />
     <link rel="stylesheet" href="../../base.css" />
@@ -19,20 +19,20 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../index.html">All files</a> / <a href="index.html">src/components</a> ErrorOnFetchPatients.tsx</h1>
+        <h1><a href="../../index.html">All files</a> / <a href="index.html">src/components</a> LoadMoreButton.tsx</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>20/20</span>
+                <span class='fraction'>28/28</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>1/1</span>
+                <span class='fraction'>5/5</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>20/20</span>
+                <span class='fraction'>28/28</span>
             </div>
         
             
@@ -83,43 +83,67 @@
 <a name='L18'></a><a href='#L18'>18</a>
 <a name='L19'></a><a href='#L19'>19</a>
 <a name='L20'></a><a href='#L20'>20</a>
-<a name='L21'></a><a href='#L21'>21</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L21'></a><a href='#L21'>21</a>
+<a name='L22'></a><a href='#L22'>22</a>
+<a name='L23'></a><a href='#L23'>23</a>
+<a name='L24'></a><a href='#L24'>24</a>
+<a name='L25'></a><a href='#L25'>25</a>
+<a name='L26'></a><a href='#L26'>26</a>
+<a name='L27'></a><a href='#L27'>27</a>
+<a name='L28'></a><a href='#L28'>28</a>
+<a name='L29'></a><a href='#L29'>29</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { Warning } from "phosphor-react";
+<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { ArrowClockwise } from "phosphor-react";
 import { usePatientContext } from "../contexts/usePatientsContext";
 &nbsp;
-export function ErrorOnFetchPatients() {
-  const { errorLoadingPatients } = usePatientContext();
+export function LoadMoreButton() {
+  const { loadingPatients, filteredPatientsList, loadMorePatients } =
+    usePatientContext();
 &nbsp;
   return (
-    &lt;div className='flex flex-col items-center justify-center'&gt;
-      &lt;Warning size={60} color='#EB5353' weight='fill' /&gt;
-      &lt;p className='text-pharma-error_primary text-4xl'&gt;Oops!&lt;/p&gt;
-      &lt;div className='w-full border-solid border-[1px] border-pharma-error_primary' /&gt;
-      &lt;p className='text-pharma-txt_primary text-xl'&gt;
-        Erro ao carregar a lista de pacientes.
-      &lt;/p&gt;
-      &lt;p className='text-pharma-txt_primary'&gt;
-        Erro: {errorLoadingPatients?.toString()}
-      &lt;/p&gt;
+    &lt;div className='w-full flex flex-col items-center justify-center'&gt;
+      &lt;button
+        aria-label='load-more-button'
+        className={`h-full flex flex-row items-center justify-center border-0 rounded gap-1 text-center disabled:opacity-50 ${
+          filteredPatientsList?.length === 0 ? "hidden" : ""
+        }`}
+        onClick={loadMorePatients}
+        disabled={loadingPatients}
+      &gt;
+        &lt;ArrowClockwise
+          size={28}
+          color='#252A37'
+          weight='thin'
+          className={`${loadingPatients &amp;&amp; "animate-spin"}`}
+        /&gt;
+        Carregar mais...
+      &lt;/button&gt;
     &lt;/div&gt;
   );
 }

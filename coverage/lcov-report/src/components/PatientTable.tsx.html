@@ -25,7 +25,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>85/85</span>
+                <span class='fraction'>70/70</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>85/85</span>
+                <span class='fraction'>70/70</span>
             </div>
         
             
@@ -133,22 +133,7 @@
 <a name='L68'></a><a href='#L68'>68</a>
 <a name='L69'></a><a href='#L69'>69</a>
 <a name='L70'></a><a href='#L70'>70</a>
-<a name='L71'></a><a href='#L71'>71</a>
-<a name='L72'></a><a href='#L72'>72</a>
-<a name='L73'></a><a href='#L73'>73</a>
-<a name='L74'></a><a href='#L74'>74</a>
-<a name='L75'></a><a href='#L75'>75</a>
-<a name='L76'></a><a href='#L76'>76</a>
-<a name='L77'></a><a href='#L77'>77</a>
-<a name='L78'></a><a href='#L78'>78</a>
-<a name='L79'></a><a href='#L79'>79</a>
-<a name='L80'></a><a href='#L80'>80</a>
-<a name='L81'></a><a href='#L81'>81</a>
-<a name='L82'></a><a href='#L82'>82</a>
-<a name='L83'></a><a href='#L83'>83</a>
-<a name='L84'></a><a href='#L84'>84</a>
-<a name='L85'></a><a href='#L85'>85</a>
-<a name='L86'></a><a href='#L86'>86</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L71'></a><a href='#L71'>71</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -188,22 +173,6 @@
 <span class="cline-any cline-yes">21x</span>
 <span class="cline-any cline-yes">21x</span>
 <span class="cline-any cline-yes">21x</span>
-<span class="cline-any cline-yes">21x</span>
-<span class="cline-any cline-yes">21x</span>
-<span class="cline-any cline-yes">21x</span>
-<span class="cline-any cline-yes">21x</span>
-<span class="cline-any cline-yes">21x</span>
-<span class="cline-any cline-yes">21x</span>
-<span class="cline-any cline-yes">21x</span>
-<span class="cline-any cline-yes">21x</span>
-<span class="cline-any cline-yes">21x</span>
-<span class="cline-any cline-yes">21x</span>
-<span class="cline-any cline-yes">21x</span>
-<span class="cline-any cline-yes">21x</span>
-<span class="cline-any cline-yes">21x</span>
-<span class="cline-any cline-yes">50x</span>
-<span class="cline-any cline-yes">50x</span>
-<span class="cline-any cline-yes">50x</span>
 <span class="cline-any cline-yes">50x</span>
 <span class="cline-any cline-yes">50x</span>
 <span class="cline-any cline-yes">50x</span>
@@ -227,13 +196,14 @@
 <span class="cline-any cline-yes">50x</span>
 <span class="cline-any cline-yes">50x</span>
 <span class="cline-any cline-yes">50x</span>
+<span class="cline-any cline-yes">50x</span>
 <span class="cline-any cline-yes">21x</span>
 <span class="cline-any cline-yes">21x</span>
 <span class="cline-any cline-yes">21x</span>
 <span class="cline-any cline-yes">21x</span>
 <span class="cline-any cline-yes">21x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { OrderByTypes, PatientFullData } from "../interfaces/IPatient";
+<span class="cline-any cline-yes">21x</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { PatientFullData } from "../interfaces/IPatient";
 &nbsp;
 import { usePatientContext } from "../contexts/usePatientsContext";
 &nbsp;
@@ -242,60 +212,44 @@ import { usePatientModal } from "../contexts/useModalPatients";
 import { SortingButtonTable } from "./SortingButtonTable";
 import { formatDate } from "../utils/common-functions";
 &nbsp;
-export const PatientTable = () =&gt; {
+export function PatientTable() {
   const { setPatient } = usePatientModal();
 &nbsp;
   const { filteredPatientsList } = usePatientContext();
 &nbsp;
   return (
-    &lt;div className='w-full h-[440px] rounded border border-solid border-pharma-border_enable overflow-auto scrollbar-thumb-zinc-500 hover:scrollbar-thumb-zinc-700 scrollbar-track-transparent scrollbar-thin'&gt;
+    &lt;div className='w-full h-[440px] bg-pharma-secondary rounded border border-solid border-pharma-border_disabled overflow-auto scrollbar-thumb-zinc-500 hover:scrollbar-thumb-zinc-700 scrollbar-track-transparent scrollbar-thin'&gt;
       &lt;table
         aria-label='Tabela de pacientes'
         aria-labelledby='Tabela de pacientes'
-        className='w-full border-collapse table-fixed'
+        className='w-full border-collapse table-fixed bg-pharma-secondary'
       &gt;
         &lt;thead&gt;
-          &lt;tr className='h-10'&gt;
-            &lt;th
-              align='center'
-              className='sticky top-0 bg-pharma-border_disabled '
-            &gt;
+          &lt;tr className='h-10 sticky top-0 bg-pharma-secondary border-b border-solid border-pharma-border_disabled'&gt;
+            &lt;th align='center'&gt;
               &lt;SortingButtonTable name='Nome' type='name' /&gt;
             &lt;/th&gt;
-            &lt;th
-              align='center'
-              className='sticky top-0  bg-pharma-border_disabled '
-            &gt;
+&nbsp;
+            &lt;th align='center'&gt;
               &lt;SortingButtonTable name='Gênero' type='gender' /&gt;
             &lt;/th&gt;
 &nbsp;
-            &lt;th
-              align='center'
-              className='sticky top-0  bg-pharma-border_disabled '
-            &gt;
+            &lt;th align='center'&gt;
               &lt;SortingButtonTable name='Data de Nascimento' type='dob' /&gt;
             &lt;/th&gt;
 &nbsp;
-            &lt;th
-              align='center'
-              className='sticky top-0 bg-pharma-border_disabled '
-            &gt;
-              Ações
-            &lt;/th&gt;
+            &lt;th align='center'&gt;Ações&lt;/th&gt;
           &lt;/tr&gt;
         &lt;/thead&gt;
         &lt;tbody&gt;
-          {filteredPatientsList?.map((patient: PatientFullData, index) =&gt; {
-            const labelId = `enhanced-table-checkdiv-${index}`;
+          {filteredPatientsList?.map((patient: PatientFullData, _) =&gt; {
             return (
               &lt;tr
-                role='checkdiv'
-                tabIndex={-1}
                 key={patient.login.uuid}
-                className='h-10 border-t border-solid border-pharma-border_enable'
+                className='h-10 border-t border-solid border-pharma-border_disabled'
               &gt;
-                &lt;td id={labelId} scope='row'&gt;
-                  {patient.name.first} {patient.name.last} - {patient.nat}
+                &lt;td scope='row' className='pl-3'&gt;
+                  {patient.name.first} {patient.name.last}
                 &lt;/td&gt;
                 &lt;td align='center'&gt;{patient.gender}&lt;/td&gt;
                 &lt;td align='center'&gt;{formatDate(patient.dob.date)}&lt;/td&gt;
@@ -306,6 +260,7 @@ export const PatientTable = () =&gt; {
                     onClick={() =&gt; {
                       setPatient(patient);
                     }}
+                    className='px-1 border border-solid border-pharma-enable rounded self-end bg-pharma-enabled text-pharma-primary hover:bg-pharma-hover'
                   &gt;
                     Detalhes
                   &lt;/button&gt;
@@ -317,7 +272,7 @@ export const PatientTable = () =&gt; {
       &lt;/table&gt;
     &lt;/div&gt;
   );
-};
+}
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -325,7 +280,7 @@ export const PatientTable = () =&gt; {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at Thu Aug 04 2022 14:35:35 GMT-0300 (Horário Padrão de Brasília)
+                at Fri Aug 05 2022 15:03:22 GMT-0300 (Horário Padrão de Brasília)
             </div>
         <script src="../../prettify.js"></script>
         <script>
