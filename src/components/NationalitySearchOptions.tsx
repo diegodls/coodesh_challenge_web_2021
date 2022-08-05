@@ -38,7 +38,9 @@ export function NationalitySearchOptions() {
 
   return (
     <div className='w-full gap-1'>
-      <label>Filtro por Nacionalidade</label>
+      <label>
+        <strong>Filtro por Nacionalidade</strong>
+      </label>
       <div>
         <div className='grid grid-cols-6 gap-1'>
           {natListT.map((country) => {
@@ -48,6 +50,7 @@ export function NationalitySearchOptions() {
                 key={country}
               >
                 <input
+                  className='checked:bg-pharma-enabled'
                   type='checkbox'
                   value={country}
                   id={`${country}countryCheckbox`}
