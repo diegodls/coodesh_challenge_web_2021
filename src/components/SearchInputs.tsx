@@ -20,9 +20,11 @@ export function SearchInputs() {
           <NameSearchOption />
           <Disclosure.Button
             aria-label='show-filters'
-            className={`w-10 h-10 flex items-center justify-center border border-solid rounded ${
-              openFilterList ? "bg-pharma-enable" : "bg-pharma-disable"
-            } hover:bg-pharma-hover 
+            className={`w-10 h-10 flex items-center justify-center border border-solid border-pharma-border_disabled rounded ${
+              openFilterList
+                ? "bg-pharma-enabled hover:bg-pharma-hover"
+                : "bg-pharma-disabled opacity-50 hover:opacity-100 hover:bg-pharma-disabled"
+            } 
           `}
             onClick={() => {
               setOpenFilterList((prev) => !prev);
@@ -30,8 +32,8 @@ export function SearchInputs() {
           >
             <Sliders
               size={32}
-              color='#78819B'
-              weight={openFilterList ? "fill" : "thin"}
+              color={openFilterList ? "#FFFFFF" : "#252A37"}
+              weight={"fill"}
             />
           </Disclosure.Button>
         </div>
@@ -45,7 +47,7 @@ export function SearchInputs() {
           leaveTo='opacity-0'
         >
           <Disclosure.Panel>
-            <div className='flex flex-col mt-1'>
+            <div className='flex flex-col mt-1 p-1'>
               <div className='flex flex-row'>
                 <GenderSearchOptions />
                 <NationalitySearchOptions />
@@ -53,7 +55,7 @@ export function SearchInputs() {
               <button
                 aria-label='apply-filters'
                 title='Filtrar'
-                className='h-10 p-2 border border-solid border-pharma-enable rounded self-end bg-pharma-secondary hover:bg-pharma-primary focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-pharma_primary focus:ring-pharma-border-focus transition-colors disabled:opacity-50'
+                className='h-10 p-2 border border-solid border-pharma-enable rounded self-end bg-pharma-enabled text-pharma-primary hover:bg-pharma-hover focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-pharma_primary focus:ring-pharma-border-focus transition-colors disabled:bg-pharma-disabled disabled:text-pharma-txt_primary disabled:opacity-50'
                 onClick={handleApplyFilters}
                 disabled={currentFilters === lastFilters}
               >
