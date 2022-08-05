@@ -15,9 +15,13 @@ export function GenderSearchOptions() {
   }
   return (
     <div className='w-full flex flex-col '>
-      <label>Filtro por Gênero</label>
       <label>
+        <strong>Filtro por Gênero</strong>
+      </label>
+
+      <label className='text-pharma-txt_primary flex items-center gap-1 max-w-0'>
         <input
+          className='checked:bg-pharma-enabled '
           name='female'
           aria-label='Buscar somente por feminino'
           type='checkbox'
@@ -30,8 +34,10 @@ export function GenderSearchOptions() {
         />
         Feminino
       </label>
-      <label>
+
+      <label className='text-pharma-txt_primary flex items-center gap-1 max-w-0'>
         <input
+          className='checked:bg-pharma-enabled'
           name='male'
           aria-label='Buscar somente por masculino'
           id='maleGenderCheckbox'
