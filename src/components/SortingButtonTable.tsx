@@ -13,7 +13,7 @@ export function SortingButtonTable({ name, type }: SortingButtonTableProps) {
   return (
     <button
       aria-label={`Ordenar pacientes por ${name}`}
-      className='w-full h-full flex flex-row items-center justify-center gap-1'
+      className='w-full h-full flex flex-row items-center justify-center gap-1 pl-5 font-bold'
       onClick={() => defineTypeOfSorting(type)}
     >
       {name}
