@@ -5,7 +5,7 @@
     target="_blank"
     alt="Clique para testar" 
    title="Clique para testar"
-    href="https://coodesh-challenge-web-2021.vercel.app/"
+    href="https://coodesh-challenge-web-2021-diegodls.vercel.app/"
   >
     <img alt="Clique para testar" title="Clique para testar"
     style="max-width: 50%;"
@@ -15,7 +15,7 @@
 </br>
 
 ## :computer: Projeto
-Projeto proposto pela equipe Coodesh, feito em ReactJS, saiba mais [clicando aqui](https://lab.coodesh.com/public-challenges/front-end-challenge-2021).
+Projeto proposto pela equipe Coodesh, feito em ReactJS, saiba mais [clicando aqui](https://coodesh-challenge-web-2021-diegodls.vercel.app/).
 </br>
 
 ## :sparkles: Testando o projeto
